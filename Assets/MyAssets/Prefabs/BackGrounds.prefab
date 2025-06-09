@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 925042368627620410}
   - component: {fileID: 5889428640627175879}
   m_Layer: 0
-  m_Name: WOODS - First (1)
+  m_Name: WOODS - First_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -115,7 +115,7 @@ GameObject:
   - component: {fileID: 1966021821171822312}
   - component: {fileID: 2910996427503913311}
   m_Layer: 0
-  m_Name: WOODS - Second (1)
+  m_Name: WOODS - Second_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 3917714166574622686}
   - component: {fileID: 4973362745884900627}
   m_Layer: 0
-  m_Name: WOODS - Third (1)
+  m_Name: WOODS - Third_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -392,7 +392,7 @@ GameObject:
   - component: {fileID: 3073008040348699901}
   - component: {fileID: 2864074518406422657}
   m_Layer: 0
-  m_Name: WOODS - Third
+  m_Name: WOODS - Third_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -495,7 +495,7 @@ GameObject:
   - component: {fileID: 8953509117423600264}
   - component: {fileID: 1488294286671018370}
   m_Layer: 0
-  m_Name: VINES - Second (1)
+  m_Name: VINES - Second_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -598,7 +598,7 @@ GameObject:
   - component: {fileID: 5252800398579056154}
   - component: {fileID: 8281531140675678905}
   m_Layer: 0
-  m_Name: WOODS - Second
+  m_Name: WOODS - Second_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -701,7 +701,7 @@ GameObject:
   - component: {fileID: 2353491485657317494}
   - component: {fileID: 6344998759395519667}
   m_Layer: 0
-  m_Name: BACKGROUND (1)
+  m_Name: BACKGROUND_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -804,7 +804,7 @@ GameObject:
   - component: {fileID: 498342456756189123}
   - component: {fileID: 324409624935616711}
   m_Layer: 0
-  m_Name: WOODS - Fourth (1)
+  m_Name: WOODS - Fourth_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -907,7 +907,7 @@ GameObject:
   - component: {fileID: 6790528597794277162}
   - component: {fileID: 2324333704957615888}
   m_Layer: 0
-  m_Name: WOODS - Fourth
+  m_Name: WOODS - Fourth_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1076,7 +1076,7 @@ GameObject:
   - component: {fileID: 778716131095028626}
   - component: {fileID: 6956555372458939515}
   m_Layer: 0
-  m_Name: WOODS - First
+  m_Name: WOODS - First_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1179,7 +1179,7 @@ GameObject:
   - component: {fileID: 1643585555999770989}
   - component: {fileID: 5737513992125911455}
   m_Layer: 0
-  m_Name: BACKGROUND
+  m_Name: BACKGROUND_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1315,7 +1315,7 @@ GameObject:
   - component: {fileID: 1192430612124801525}
   - component: {fileID: 1896274105724387841}
   m_Layer: 0
-  m_Name: BUSH - BACKGROUND (1)
+  m_Name: BUSH - BACKGROUND_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1418,7 +1418,7 @@ GameObject:
   - component: {fileID: 7922743871076244375}
   - component: {fileID: 354059175921054000}
   m_Layer: 0
-  m_Name: VINES - Second
+  m_Name: VINES - Second_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1554,7 +1554,7 @@ GameObject:
   - component: {fileID: 3113411716288177005}
   - component: {fileID: 3795913967560237518}
   m_Layer: 0
-  m_Name: BUSH - BACKGROUND
+  m_Name: BUSH - BACKGROUND_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
