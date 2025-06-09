@@ -54,6 +54,12 @@ public class PlayerController : MonoBehaviour
 
     private void Run()
     {
+        if (animator != null)
+        {
+            animator.SetBool("isRunning", isRunning);
+            animator.SetBool("isJumping", rb2d.linearVelocity.y > 0.1f);
+            animator.SetBool("isDead", isDead);
+        }
         // X軸方向に移動
         float moveInput = Input.GetAxis("Horizontal"); // 入力を取得
         Vector2 force = new Vector2(moveInput * runVelocity, 0); // X軸方向の力を計算
@@ -87,7 +93,11 @@ public class PlayerController : MonoBehaviour
     public void Die()
     {
         isDead = true;
-        rb2d.linearVelocity = Vector2.zero;
+        rb2d.linearVelocity = Vector2.zero; // 速度をゼロにして停止
+        if (animator != null)
+        {
+            animator.SetTrigger("Die");
+        }
     }
 
     public void Revive()
