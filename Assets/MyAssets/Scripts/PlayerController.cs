@@ -108,13 +108,13 @@ public class PlayerController : MonoBehaviour
         if (moveInput != 0)
         {
             isRunning = true;
-            rb2d.velocity = new Vector2(moveInput * runSpeed, rb2d.velocity.y); // 水平移動
+            rb2d.linearVelocity = new Vector2(moveInput * runSpeed, rb2d.linearVelocity.y); // 水平移動
             FlipCharacter(moveInput); // キャラクターの向きを反転
         }
         else
         {
             isRunning = false;
-            rb2d.velocity = new Vector2(0, rb2d.velocity.y); // 停止
+            rb2d.linearVelocity = new Vector2(0, rb2d.linearVelocity.y); // 停止
         }
     }
 
@@ -122,7 +122,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && transform.position.y < maxHeight)
         {
-            rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce); // ジャンプ
+            rb2d.linearVelocity = new Vector2(rb2d.linearVelocity.x, jumpForce); // ジャンプ
         }
     }
 
@@ -131,7 +131,7 @@ public class PlayerController : MonoBehaviour
         if (animator != null)
         {
             animator.SetBool("isRunning", isRunning);
-            animator.SetBool("isJumping", rb2d.velocity.y > 0.1f);
+            animator.SetBool("isJumping", rb2d.linearVelocity.y > 0.1f);
             animator.SetBool("isDead", isDead);
         }
     }
@@ -147,7 +147,7 @@ public class PlayerController : MonoBehaviour
     public void Die()
     {
         isDead = true;
-        rb2d.velocity = Vector2.zero; // 速度をゼロにして停止
+        rb2d.linearVelocity = Vector2.zero; // 速度をゼロにして停止
         if (animator != null)
         {
             animator.SetTrigger("Die");
