@@ -1,3 +1,4 @@
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class MiniGamePlayerController : MonoBehaviour
@@ -6,6 +7,7 @@ public class MiniGamePlayerController : MonoBehaviour
     private const float JUMP_FORCE = 340.0f;
     private const float WALK_FORCE = 30.0f;
     private const float MAX_WALK_SPEED = 2.0f;
+    private bool isSafe = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -43,8 +45,43 @@ public class MiniGamePlayerController : MonoBehaviour
 
         if(key != 0)
         {
-            transform.localScale = new Vector3(-key, 1, 1);
+            transform.localScale = new Vector3(key, 1, 1);
+        }
+
+        if (isSafe)
+        {
+            Debug.Log("ÉZÅ[Ét");
+        }
+        else
+        {
+            Debug.Log("out");
+            //Die();
         }
 
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+
+        if (!isSafe && other.CompareTag("Wolf"))
+        {
+            Debug.Log("die");
+        }
+        else if (other.CompareTag("Obstacles"))
+        {
+            isSafe = true;
+        }
+
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+
+        if (other.CompareTag("Obstacles"))
+        {
+            isSafe = false;
+        }
+
+    }
+
 }

@@ -5,6 +5,12 @@ TagManager:
   serializedVersion: 3
   tags:
   - Ground
+  - Wolf
+  - Sheep
+  - GumiRed
+  - GumiBlue
+  - GumiGreen
+  - Obstacles
   - Sweets
   layers:
   - Default

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 252636732445884507}
   m_Layer: 0
   m_Name: Wolf01
-  m_TagString: Untagged
+  m_TagString: Wolf
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
