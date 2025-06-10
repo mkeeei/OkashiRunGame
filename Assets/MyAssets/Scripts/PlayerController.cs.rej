@@ -1,0 +1,168 @@
+diff a/Assets/MyAssets/Scripts/PlayerController.cs b/Assets/MyAssets/Scripts/PlayerController.cs	(rejected hunks)
+@@ -1,132 +0,58 @@
+-//using Unity.VisualScripting;
+-//using UnityEngine;
+-
+-//public class PlayerController : MonoBehaviour
+-//{
+-//    bool isDead;
+-//    float angle;
+-
+-//    public float maxHeight;
+-//    public float runVelocity;
+-//    public float jumpVelocity;
+-//    public float relativeVelocityX;
+-//    [SerializeField] Rigidbody2D rb2d;
+-
+-//    void Start()
+-//    {
+-
+-//    }
+-
+-//    public bool IsDead()
+-//    {
+-//        return isDead;
+-//    }
+-
+-//    void Update()
+-//    {
+-//        // 最高高度に達していない場合、タップの入力を受け付ける
+-//        if (Input.GetKeyDown(KeyCode.Space) && transform.position.y < maxHeight)
+-//        {
+-//            Jump();
+-//        }
+-//        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+-//        {
+-//            Run();
+-//        }
+-//        // 角度を反映
+-//        ApplyAngle();
+-
+-//        // angleが水平以上だったら、アニメーターのJumpフラグをtrueにする
+-//        //Animator.SetBool("jump", angle >= 0.0f && !isDead);
+-
+-//    }
+-
+-//    void ApplyAngle()
+-//    {
+-//        // 現在の速度、相対速度から進んでいる角度を求める
+-//        float targetAngle = Mathf.Atan2(rb2d.velocity.y, relativeVelocityX) * Mathf.Rad2Deg;
+-
+-//        // 死亡したら常にヒックリ返る
+-//        if (isDead)
+-//        {
+-//            targetAngle = 180.0f;
+-//        }
+-//        else
+-//        {
+-//            targetAngle =
+-//                Mathf.Atan2(rb2d.linearVelocity.y, relativeVelocityX) * Mathf.Rad2Deg;
+-//        }
+-//    }
+-//        public void Run()
+-//    {
+-//        // 死んだら走れない
+-//        if (!isDead) return;
+-
+-//        // Velocityを直接書き換えてX方向に加速
+-//        rb2d.velocity = new Vector2(runVelocity, rb2d.velocity.y);
+-//    }
+-//        public void Jump()
+-//        {
+-//            // 死んだらジャンプできない
+-//            if (isDead) return;
+-
+-//            // Velocity
+-//            rb2d.linearVelocity = new Vector2(0, jumpVelocity);
+-//        }
+-
+-//}
+-
+ using UnityEngine;
+ 
+ public class PlayerController : MonoBehaviour
+ {
+-    [Header("設定")]
+-    public float runSpeed = 5f;          // 走る速度
+-    public float jumpForce = 10f;        // ジャンプの力
+-    public float maxHeight = 10f;        // 最大高さ
+-    public bool isDead = false;          // 死亡フラグ
+-
+-    [Header("コンポーネント")]
+-    [SerializeField] private Rigidbody2D rb2d;  // Rigidbody2Dコンポーネント
+-    [SerializeField] private Animator animator; // Animatorコンポーネント
+-
+-    private bool isRunning = false;      // 走っているかどうか
++    [SerializeField] private Rigidbody2D rb2d;
++    public float runVelocity = 5f;
++    public float jumpForce = 5f;
++    private bool isDead = false;
++    private bool isGrounded = false;
++    private bool isJumping = false; // ジャンプ中かどうかを判定するフラグ
+ 
+     void Update()
+     {
+-        if (isDead) return; // 死亡している場合、移動処理を行わない
++        if (isDead) return;
+ 
+-        Run();
+-        Jump();
+-        UpdateAnimator();
+-    }
++        // 接地判定
++        isGrounded = IsGrounded();
+ 
+-    private void Run()
+-    {
+-        float moveInput = Input.GetAxisRaw("Horizontal"); // 左右の入力
++        // ジャンプ処理
++        if (isGrounded && Input.GetKeyDown(KeyCode.Space) && !isJumping)
++        {
++            Jump();
++        }
+ 
+-        if (moveInput != 0)
++        // 走行処理
++        if (Input.GetKey(KeyCode.RightArrow))
+         {
+-            isRunning = true;
+-            rb2d.linearVelocity = new Vector2(moveInput * runSpeed, rb2d.linearVelocity.y); // 水平移動
+-            FlipCharacter(moveInput); // キャラクターの向きを反転
++            Run();
++        }
++        else if (Input.GetKey(KeyCode.LeftArrow))
++        {
++            Behind();
+         }
+         else
+         {
+-            isRunning = false;
+-            rb2d.linearVelocity = new Vector2(0, rb2d.linearVelocity.y); // 停止
++            StopRunning();
+         }
+     }
+ 
++    private bool IsGrounded()
++    {
++        // プレイヤーの位置から下方向にRayを飛ばして接地判定
++        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.1f);
++        return hit.collider != null;
++    }
++
+     private void Jump()
+     {
+-        if (Input.GetKeyDown(KeyCode.Space) && transform.position.y < maxHeight)
+-        {
+-            rb2d.linearVelocity = new Vector2(rb2d.linearVelocity.x, jumpForce); // ジャンプ
+-        }
++        // Y軸の速度をリセットしてジャンプ
++        //rb2d.linearVelocity = new Vector2(rb2d.linearVelocity.x, 0);
++        rb2d.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
++        isJumping = true; // ジャンプ中フラグを立てる
+     }
+ 
+-    private void UpdateAnimator()
++    private void Run()
+     {
+         if (animator != null)
+         {

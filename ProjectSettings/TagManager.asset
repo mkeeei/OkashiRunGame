@@ -11,6 +11,7 @@ TagManager:
   - GumiBlue
   - GumiGreen
   - Obstacles
+  - Sweets
   layers:
   - Default
   - TransparentFX
