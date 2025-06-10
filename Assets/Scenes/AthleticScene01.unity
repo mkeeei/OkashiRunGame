@@ -1986,14 +1986,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 101309540549193201, guid: 122bb0b9b57706f40a18fa5fee2ad052, type: 3}
-      propertyPath: m_Size.y
-      value: 0.91
-      objectReference: {fileID: 0}
-    - target: {fileID: 101309540549193201, guid: 122bb0b9b57706f40a18fa5fee2ad052, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1654060630967815663, guid: 122bb0b9b57706f40a18fa5fee2ad052, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.03
@@ -2038,37 +2030,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sheep01_0
       objectReference: {fileID: 0}
-    - target: {fileID: 7267970060291454122, guid: 122bb0b9b57706f40a18fa5fee2ad052, type: 3}
-      propertyPath: m_BodyType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7267970060291454122, guid: 122bb0b9b57706f40a18fa5fee2ad052, type: 3}
-      propertyPath: m_GravityScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7267970060291454122, guid: 122bb0b9b57706f40a18fa5fee2ad052, type: 3}
-      propertyPath: m_UseFullKinematicContacts
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7656230488851930852, guid: 122bb0b9b57706f40a18fa5fee2ad052, type: 3}
-      propertyPath: isDead
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7656230488851930852, guid: 122bb0b9b57706f40a18fa5fee2ad052, type: 3}
-      propertyPath: runSpeed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7656230488851930852, guid: 122bb0b9b57706f40a18fa5fee2ad052, type: 3}
-      propertyPath: stopForce
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7656230488851930852, guid: 122bb0b9b57706f40a18fa5fee2ad052, type: 3}
-      propertyPath: relativeVelocityX
-      value: 3
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 0}
-    - {fileID: 0}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
