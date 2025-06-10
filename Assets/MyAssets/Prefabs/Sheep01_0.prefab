@@ -152,8 +152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd272fc3b0418774bac0257278321c80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runSpeed: 5
-  stopForce: 5
+  runSpeed: 4
+  stopForce: 4
   jumpForce: 5
   maxHeight: 7
   isDead: 0
@@ -194,5 +194,5 @@ CapsuleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0.04, y: 0}
-  m_Size: {x: 0.78, y: 1}
+  m_Size: {x: 0.78, y: 0.91}
   m_Direction: 0
