@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8078635996534755953}
   m_Layer: 0
   m_Name: GumiGreen01
-  m_TagString: Untagged
+  m_TagString: GumiGreen
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
