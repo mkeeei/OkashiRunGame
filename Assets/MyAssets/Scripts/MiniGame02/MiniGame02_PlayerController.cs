@@ -12,7 +12,7 @@ public class MiniGame02_PlayerController : MonoBehaviour
 
     [SerializeField] Rigidbody2D _rb; // Rigidbody2Dコンポーネントを格納する変数。
     ReactiveProperty<Vector2> _moveInput = new(); // 移動入力を格納するReactiveProperty。
-    float _moveLevel = 1f; // 移動レベルを格納する変数。
+    public float _moveLevel = 1f; // 移動レベルを格納する変数。
     public SerializableReactiveProperty<bool> _isJumping = new(); // ジャンプ状態を格納するReactiveProperty。
 
     private void Start()
@@ -23,6 +23,23 @@ public class MiniGame02_PlayerController : MonoBehaviour
             OnMoveInputChanged(move);
         });
     }
+
+    // _moveLevel変更メソッド。
+    public void SetMoveLevel(float level)
+    {
+        // 移動レベルを加算する。
+        _moveLevel += level;
+
+        // 最大値を5.0fに抑える。
+        _moveLevel = Mathf.Clamp(_moveLevel, 1.0f, 5.0f);
+    }
+
+    // 速度をセットしなおすメソッド。加減速時に速度変化を適用するために呼び出す。
+    public void SetVelocity()
+    {
+        OnMoveInputChanged(_moveInput.Value);
+    }
+
 
     // 移動入力が変化したときに呼び出されるメソッド。
     private void OnMoveInputChanged(Vector2 move)
