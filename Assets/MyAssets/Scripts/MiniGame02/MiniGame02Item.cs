@@ -1,0 +1,70 @@
+// ミニゲームシーン02におけるアイテムのクラス。
+
+using R3;
+using UnityEngine;
+
+public class MiniGame02Item : MonoBehaviour
+{
+    [SerializeField] private ItemType itemType = ItemType.SpeedUp; // アイテムの種類を設定する変数。
+    [SerializeField] MiniGame02_PlayerController _player; // プレイヤーの参照を設定する変数。
+    [SerializeField] SerializableReactiveProperty<bool> _isGetItem = new(false); // アイテム取得状態を管理するReactiveProperty。
+    [SerializeField] SpriteRenderer _itemSprite; // アイテムのスプライトレンダラーを設定する変数。
+
+    // アイテムの種類を定義する列挙型。
+    public enum ItemType
+    {
+        Heart,      // ハート
+        SpeedUp     // パワーアップ
+    }
+
+
+    // プレイヤーがアイテムに触れたときに呼び出されるメソッド。
+    public void GetItem()
+    {
+        // アイテムが取得済みの場合は何もしない。
+        if (_isGetItem.Value)
+        {
+            return;
+        }
+
+        // アイテムの種類がSpeedUpの場合、プレイヤーの速度を上げる処理を実行。
+        if (itemType == ItemType.SpeedUp)
+        {
+            Debug.Log("Speed Up Item Acquired!");
+            _player.SetMoveLevel(0.5f);
+
+            // 速度変化を適用するためにSetVelocityを呼び出す。
+            _player.SetVelocity();
+        }
+    }
+
+    // アイテムの取得状態を変更するメソッド。
+    public void ToggleGetItem(bool isGet)
+    {
+        _isGetItem.Value = isGet;
+    }
+
+    // 消去処理。
+    public void DestroyItem()
+    {
+        // アイテムを半透明にして取得済みにする。
+        _itemSprite.color = new Color(1f, 1f, 1f, 0.5f);
+    }
+
+    // 取得処理。
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // プレイヤーがアイテムを取得した場合。
+        if (collision.CompareTag("Player"))
+        {
+            // アイテムの取得処理を実行。
+            GetItem();
+
+            // アイテム取得状態を更新。
+            ToggleGetItem(true);
+
+            // 自身を消去。
+            DestroyItem();
+        }
+    }
+}
