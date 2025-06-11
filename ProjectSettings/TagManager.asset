@@ -12,6 +12,7 @@ TagManager:
   - GumiGreen
   - Obstacles
   - Sweets
+  - Pokkey
   layers:
   - Default
   - TransparentFX
