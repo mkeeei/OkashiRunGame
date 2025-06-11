@@ -9,12 +9,20 @@ public class WolfEyeController : MonoBehaviour
     {
         // スケールを0から100に変化させるアニメーションを開始
         transform.localScale = Vector3.zero;
-        transform.DOScale(new Vector3(100f, 100f, 100f), 2f); // 2秒でスケール変更
+        transform.DOScale(new Vector3(10f, 10f, 10f), 1f); // 1秒でスケール変更
     }
 
     private void Update()
     {
-        
+        timer += Time.deltaTime;
+
+        if (timer > 3)
+        {
+            timer = 0;
+            // 1秒かけてスケールを0にし、イージングを追加
+            transform.DOScale(Vector3.zero, 1f).SetEase(Ease.OutQuad);
+        }
+
     }
 
 }
