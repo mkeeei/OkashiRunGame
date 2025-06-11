@@ -1,3 +1,4 @@
+using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.SceneManagement; // SceneManagerを使用するために追加
 
@@ -8,7 +9,7 @@ public class PlayerController : MonoBehaviour
     public float stopForce = 4f;
     public float jumpForce = 5f;
     public float maxHeight = 7f;
-    public bool isDead;
+    GameObject player;
 
     [Header("コンポーネント")]
     [SerializeField] private Rigidbody2D rb2d;
@@ -16,16 +17,27 @@ public class PlayerController : MonoBehaviour
 
     private bool isJumping = false;
     private bool isRunning = false;
+    private bool isDead = false;
+
+    private void Start()
+    {
+        this.player = GameObject.Find("Sheep01_0");
+    }
 
     void Update()
     {
-        Debug.Log(isDead);
-
         if (isDead) return;
 
         Run();
         Jump();
-        UpdateAnimator();
+
+        if (transform.position.y <= -5f)
+        {
+            Destroy(gameObject);
+            RestartGame(); // ゲームをリスタートするメソッドを呼び出し
+
+        }
+
     }
 
     private void Run()
@@ -47,46 +59,43 @@ public class PlayerController : MonoBehaviour
             rb2d.AddForce(force);
         }
 
-        AlignWithSlope();
+        //AlignWithSlope();
     }
 
     private void Jump()
     {
         if (isDead) return;
 
-        if (Input.GetKeyDown(KeyCode.Space) && transform.position.y < maxHeight)
+        if (Input.GetKeyDown(KeyCode.Space) && !isJumping)
         {
+            Debug.Log("Jump");
             Vector2 force = new Vector2(0, jumpForce);
             rb2d.AddForce(force, ForceMode2D.Impulse);
+
+            isJumping = true;
         }
+
+        
+
     }
 
-    private void UpdateAnimator()
-    {
-        if (animator != null)
-        {
-            animator.SetBool("isRunning", isRunning);
-            animator.SetBool("isJumping", rb2d.linearVelocity.y > 0.1f);
-            animator.SetBool("isDead", isDead);
-        }
-    }
-
-    private void AlignWithSlope()
-    {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1f);
-        if (hit.collider != null && hit.collider.CompareTag("Ground"))
-        {
-            Vector2 slopeNormal = hit.normal;
-            float angle = Vector2.SignedAngle(Vector2.up, slopeNormal);
-            rb2d.rotation = angle;
-        }
-    }
+    //private void AlignWithSlope()
+    //{
+    //    RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1f);
+    //    if (hit.collider != null && hit.collider.CompareTag("Ground"))
+    //    {
+    //        Vector2 slopeNormal = hit.normal;
+    //        float angle = Vector2.SignedAngle(Vector2.up, slopeNormal);
+    //        rb2d.rotation = angle;
+    //    }
+    //}
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Ground"))
         {
             isJumping = false;
+            Debug.Log("地面に触れているよ :　" + isJumping);
         }
 
         if (collision.collider.CompareTag("Sweets"))
@@ -106,14 +115,14 @@ public class PlayerController : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public void Revive()
-    {
-        isDead = false;
-        rb2d.linearVelocity = Vector2.zero;
-        transform.rotation = Quaternion.identity;
-        if (animator != null)
-        {
-            animator.SetTrigger("Revive");
-        }
-    }
+    //public void Revive()
+    //{
+    //    isDead = false;
+    //    rb2d.linearVelocity = Vector2.zero;
+    //    transform.rotation = Quaternion.identity;
+    //    if (animator != null)
+    //    {
+    //        animator.SetTrigger("Revive");
+    //    }
+    //}
 }
