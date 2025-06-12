@@ -8,8 +8,23 @@ public class WolfEyesGenerator : MonoBehaviour
     [SerializeField] private float delta = 0f;
     [SerializeField] private float timer = 0f;
     [SerializeField] private int count = 0;
+    [SerializeField] public GameManager gameManager;
 
     void Update()
+    {
+        if (gameManager.IsGameOver())
+        {
+            Debug.Log("IsGameOver‚ªŒÄ‚Î‚ê‚ÄŠÒ‚³‚ê‚Ü‚µ‚½");
+            return;
+        }
+        else
+        {
+            Create();
+        }
+
+    }
+
+    public void Create()
     {
         this.delta += Time.deltaTime;
         this.timer += Time.deltaTime;
@@ -23,7 +38,7 @@ public class WolfEyesGenerator : MonoBehaviour
                 int px = Random.Range(-7, 0);
                 go.transform.position = new Vector3(px, 2, 0);
             }
-            else if(this.delta >8  && count == 1)
+            else if (this.delta > 8 && count == 1)
             {
                 count += 1;
                 GameObject go = Instantiate(wolfEyeLeftPrefab);
@@ -34,7 +49,7 @@ public class WolfEyesGenerator : MonoBehaviour
             {
                 count += 1;
                 GameObject go = Instantiate(wolfEyeRightPrefab);
-                int px = Random.Range(-7,0);
+                int px = Random.Range(-7, 0);
                 go.transform.position = new Vector3(px, 2, 0);
             }
             else if (this.delta > 16 && count == 3)
@@ -48,7 +63,7 @@ public class WolfEyesGenerator : MonoBehaviour
             {
                 count += 1;
                 GameObject go = Instantiate(wolfEyeRightPrefab);
-                int px = Random.Range(-7,0);
+                int px = Random.Range(-7, 0);
                 go.transform.position = new Vector3(px, 2, 0);
             }
             else if (this.delta > 25 && count == 5)
@@ -59,7 +74,7 @@ public class WolfEyesGenerator : MonoBehaviour
                 go1.transform.position = new Vector3(-5, 2, 0);
                 go2.transform.position = new Vector3(5, 2, 0);
             }
-            
         }
+
     }
 }

@@ -3,27 +3,29 @@ using UnityEngine;
 
 public class MiniGamePlayerController : MonoBehaviour
 {
-    public MiniGamePlayerController miniGamePlayerController;
+    //public MiniGamePlayerController miniGamePlayerController;
     Rigidbody2D rigid2D;
     private const float JUMP_FORCE = 340.0f;
     private const float WALK_FORCE = 30.0f;
     private const float MAX_WALK_SPEED = 3.0f;
-    private bool isSafe = false;
-    private Animator animator;
+    [SerializeField] private bool isSafe = false;
+    [SerializeField] private bool isDead = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         Application.targetFrameRate = 60;
         rigid2D = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Walk();
-        Jump();
+        if (!isDead)
+        {
+            Walk();
+            Jump();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -37,9 +39,16 @@ public class MiniGamePlayerController : MonoBehaviour
         {
             if (!isSafe)
             {
-                Dead();
+                Debug.Log("isDeadがtrueになりました");
+                isDead = true;
             }
         }
+    }
+
+    public bool IsDead()
+    {
+        Debug.Log("isDeadが還されました");
+        return isDead;
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -50,14 +59,6 @@ public class MiniGamePlayerController : MonoBehaviour
             isSafe = false;
         }
 
-    }
-
-    private void Dead()
-    {
-        Debug.Log("Dead");
-        // MiniGamePlayerController スクリプトを無効化
-        miniGamePlayerController.enabled = false;
-        animator.speed = 0;
     }
 
     private void Walk()
