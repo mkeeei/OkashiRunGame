@@ -13,6 +13,7 @@ TagManager:
   - Obstacles
   - Sweets
   - Pokkey
+  - Explosionable
   layers:
   - Default
   - TransparentFX
