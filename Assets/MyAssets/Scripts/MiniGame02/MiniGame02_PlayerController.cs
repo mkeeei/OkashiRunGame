@@ -6,9 +6,9 @@ using UnityEngine.InputSystem;
 
 public class MiniGame02_PlayerController : MonoBehaviour
 {
-    [Header("移動設定")]
     const float MOVE_SPEED = 5f; // プレイヤーの移動速度定数。
-    [SerializeField] float JUMP_FORCE = 340f; // ジャンプの力定数。
+    const float JUMP_FORCE = 340f; // ジャンプの力定数。
+    public SerializableReactiveProperty<bool> _canMove = new(true); // プレイヤーが移動可能かどうかを管理するReactiveProperty。
 
     [SerializeField] Rigidbody2D _rb; // Rigidbody2Dコンポーネントを格納する変数。
     ReactiveProperty<Vector2> _moveInput = new(); // 移動入力を格納するReactiveProperty。
@@ -17,12 +17,27 @@ public class MiniGame02_PlayerController : MonoBehaviour
 
     private void Start()
     {
+        playerInitialize(); // プレイヤーの初期化メソッドを呼び出す。
+
         // _moveInputを購読して、値が変化したときにOnMoveInputChangedメソッドを呼び出す。
         _moveInput.Subscribe(move =>
         {
             OnMoveInputChanged(move);
         });
     }
+
+    // プレイヤーの初期化メソッド。
+    private void playerInitialize()
+    {
+        _canMove.Value = true; // プレイヤーが移動可能に設定。
+    }
+
+    // プレイヤーの移動の可否を切り替えるメソッド。
+    public void ToggleCanMove(bool _move)
+    {
+        _canMove.Value = _move; // プレイヤーの移動可能状態を設定する。
+    }
+
 
     // _moveLevel変更メソッド。
     public void SetMoveLevel(float level)
