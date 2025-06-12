@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (isDead) return;
+        //if (isDead) return;
 
         Run();
         Jump();
@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
 
     private void Run()
     {
-        if (isDead) return;
+        //if (isDead) return;
 
         float moveInput = Input.GetAxisRaw("Horizontal");
 
@@ -59,55 +59,49 @@ public class PlayerController : MonoBehaviour
             rb2d.AddForce(force);
         }
 
-        //AlignWithSlope();
     }
 
     private void Jump()
     {
-        if (isDead) return;
+        //if (isDead) return;
 
         if (Input.GetKeyDown(KeyCode.Space) && !isJumping)
         {
-            Debug.Log("Jump");
             Vector2 force = new Vector2(0, jumpForce);
             rb2d.AddForce(force, ForceMode2D.Impulse);
 
             isJumping = true;
         }
 
-        
-
     }
-
-    //private void AlignWithSlope()
-    //{
-    //    RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1f);
-    //    if (hit.collider != null && hit.collider.CompareTag("Ground"))
-    //    {
-    //        Vector2 slopeNormal = hit.normal;
-    //        float angle = Vector2.SignedAngle(Vector2.up, slopeNormal);
-    //        rb2d.rotation = angle;
-    //    }
-    //}
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Ground"))
         {
             isJumping = false;
-            Debug.Log("地面に触れているよ :　" + isJumping);
         }
 
-        if (collision.collider.CompareTag("Sweets"))
-        {
-            rb2d.linearVelocity = Vector2.zero;
-            animator.SetTrigger("Die");
-            isDead = true;
+        //if (collision.collider.CompareTag("Sweets"))
+        //{
+        //    rb2d.linearVelocity = Vector2.zero;
+        //    //animator.SetTrigger("Die");
+        //    isDead = true;
 
-            RestartGame(); // ゲームをリスタートするメソッドを呼び出し
+        //    RestartGame(); // ゲームをリスタートするメソッドを呼び出し
 
-        }
+        //}
     }
+    //public void Die()
+    //{
+    //    Debug.Log("死にました");
+    //    isDead = true;
+    //    rb2d.linearVelocity = Vector2.zero; // 速度をゼロにして停止
+    //    //if (animator != null)
+    //    //{
+    //    //    animator.SetTrigger("Die");
+    //    //}
+    //}
 
     private void RestartGame()
     {
