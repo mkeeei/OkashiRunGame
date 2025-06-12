@@ -34,6 +34,7 @@ public class MiniGame02BossManager : MonoBehaviour
         _bossHealth.Value--;
 
         // 点滅させる。
+        _bossSprite.color = new Color(_bossSprite.color.r, _bossSprite.color.g, _bossSprite.color.b, 1f); // 点滅の前準備として透明度をリセット。
         _bossSprite.DOFade(0f, 0.15f).SetLoops(8, LoopType.Yoyo);
 
         // ボスの体力が0以下になった場合、ボスを倒す。
@@ -51,14 +52,11 @@ public class MiniGame02BossManager : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             // プレイヤーの速度が十分であれば、ボスにダメージを与える。
-            if (_player._moveLevel >= _koMoveLevel.Value) 
+            if (_player._moveLevel >= _koMoveLevel.Value)
             {
                 Debug.Log("Boss Hit! Player was fast enough.");
                 // ボスの被弾処理を呼び出す。
                 OnBossHit();
-            }
-            else
-            {
             }
 
             // プレイヤーを上方へ吹き飛ばす。

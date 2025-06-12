@@ -1,14 +1,10 @@
 fileFormatVersion: 2
-guid: 0b129f2a956d8b240b08f0f571d150ba
-AssetOrigin:
-  serializedVersion: 1
-  productId: 191548
-  packageName: Sweets Icon Pack
-  packageVersion: 1.1
-  assetPath: Assets/Sweets Icon Pack/Icons/Bonbon.png
-  uploadId: 444702
+guid: 59de5bdc5bd0e454988e7de93609c784
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 6819999195183264915
+    second: symbol014_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -55,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,7 +68,7 @@ TextureImporter:
   ignorePngGamma: 0
   applyGammaDecoding: 0
   swizzle: 50462976
-  cookieLightType: 1
+  cookieLightType: 0
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
@@ -141,7 +137,29 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: symbol014_0
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 39
+        width: 442
+        height: 422
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3943955522185ae50800000000000000
+      internalID: 6819999195183264915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -155,7 +173,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      symbol014_0: 6819999195183264915
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
