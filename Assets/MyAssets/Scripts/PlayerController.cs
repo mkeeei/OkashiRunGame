@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.SceneManagement; // SceneManagerを使用するために追加
@@ -10,24 +11,26 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 5f;
     public float maxHeight = 7f;
     GameObject player;
+    GameObject wolf;
 
     [Header("コンポーネント")]
     [SerializeField] private Rigidbody2D rb2d;
-    [SerializeField] private Animator animator;
+    [SerializeField] private GameObject sweets;
 
     private bool isJumping = false;
     private bool isRunning = false;
     private bool isDead = false;
 
+
     private void Start()
     {
         this.player = GameObject.Find("Sheep01_0");
+        this.wolf = GameObject.Find("Wolf");
+        this.sweets = GameObject.Find("Sweets");
     }
 
     void Update()
     {
-        //if (isDead) return;
-
         Run();
         Jump();
 
@@ -42,7 +45,6 @@ public class PlayerController : MonoBehaviour
 
     private void Run()
     {
-        //if (isDead) return;
 
         float moveInput = Input.GetAxisRaw("Horizontal");
 
@@ -63,7 +65,6 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
-        //if (isDead) return;
 
         if (Input.GetKeyDown(KeyCode.Space) && !isJumping)
         {
@@ -81,17 +82,11 @@ public class PlayerController : MonoBehaviour
         {
             isJumping = false;
         }
-
-        //if (collision.collider.CompareTag("Sweets"))
-        //{
-        //    rb2d.linearVelocity = Vector2.zero;
-        //    //animator.SetTrigger("Die");
-        //    isDead = true;
-
-        //    RestartGame(); // ゲームをリスタートするメソッドを呼び出し
-
-        //}
     }
+
+
+
+
     //public void Die()
     //{
     //    Debug.Log("死にました");
