@@ -31,7 +31,7 @@ public class MiniGame02Item : MonoBehaviour
         if (itemType == ItemType.SpeedUp)
         {
             Debug.Log("Speed Up Item Acquired!");
-            _player.SetMoveLevel(0.5f);
+            _player.AddMoveLevel(0.5f);
 
             // 速度変化を適用するためにSetVelocityを呼び出す。
             _player.SetVelocity();
