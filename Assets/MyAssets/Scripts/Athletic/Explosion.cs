@@ -8,12 +8,23 @@ public class Explosion : MonoBehaviour
     [SerializeField] private float explosionRadius = 2f;
     [SerializeField] private float upliftModifier = 0.5f;
 
+    private Collider2D triggerCollider;
+
+    private void Awake()
+    {
+        // Collider2D をキャッシュ
+        triggerCollider = GetComponent<Collider2D>();
+    }
+
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         // あたったオブジェクトが Explosionable タグなら発火
         if (!other.CompareTag("Explosionable")) return;
 
-        Vector2 center = (Vector2)transform.position;
+        // Collider.bounds の center.x／min.y を使って足元中心を計算
+        Bounds b = triggerCollider.bounds;
+        Vector2 center = new Vector2(b.center.x, b.min.y);
 
         // 半径内の Collider2D を列挙
         Collider2D[] hits = Physics2D.OverlapCircleAll(center, explosionRadius);
@@ -24,6 +35,7 @@ public class Explosion : MonoBehaviour
             Rigidbody2D rb = col.attachedRigidbody;
             if (rb != null)
             {
+                rb.linearVelocity = Vector2.zero;
                 // 拡張メソッドで爆風力を加える
                 rb.AddExplosionForce(explosionForce, center, explosionRadius, upliftModifier);
             }
@@ -33,7 +45,11 @@ public class Explosion : MonoBehaviour
     // Sceneビューで爆発半径が見えるように
     private void OnDrawGizmosSelected()
     {
+        if (triggerCollider == null) triggerCollider = GetComponent<Collider2D>();
+        Bounds b = triggerCollider.bounds;
+        Vector2 center = new Vector2(b.center.x, b.min.y);
+
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, explosionRadius);
+        Gizmos.DrawWireSphere(center, explosionRadius);
     }
 }
