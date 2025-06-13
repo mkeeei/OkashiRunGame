@@ -20,7 +20,8 @@ public class WolfEyeController : MonoBehaviour
         {
             timer = 0;
             // 1秒かけてスケールを0にし、イージングを追加
-            transform.DOScale(Vector3.zero, 1f).SetEase(Ease.OutQuad);
+            transform.DOScale(Vector3.zero, 1f).SetEase(Ease.OutQuad).OnKill(() => Destroy(gameObject)); ;
+            
         }
 
     }

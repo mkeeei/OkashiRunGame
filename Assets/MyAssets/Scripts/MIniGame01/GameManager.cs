@@ -1,50 +1,74 @@
+using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public MiniGamePlayerController miniGamePlayerController;
 
     enum State
     {
         Play,
-        GameOver
+        GameOver,
+        GameClear,
+        Ready
     }
 
     State state;
-    [SerializeField] public MiniGamePlayerController sheepController;
-    [SerializeField] public GameObject playerPrefab;
+    [SerializeField] private MiniGamePlayerController sheepControllerPrefab;
     [SerializeField] public Animator animator;
     [SerializeField] private bool isGameOver = false;
+    [SerializeField] private float timer = 0;
+    [SerializeField] public TextMeshProUGUI stateText;
+
+    MiniGamePlayerController sheepController;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        GameObject player = Instantiate(playerPrefab);
-        player.transform.position = new Vector3(-5, 8, 0);
-        state = State.Play;
+        Time.timeScale = 1;
+        sheepController = Instantiate(sheepControllerPrefab);
+        sheepController.transform.position = new Vector3(-4, 8, 0);
+        state = State.Ready;
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
-        switch (state)
+        timer += Time.deltaTime;
+
+        if (timer >= 30.0f)
         {
+            stateText.text = "GO Run Way !!";
+            state = State.GameClear;
+        }
+        else
+        {
+            switch (state)
+            {
+                case State.Ready:
+                    stateText.text = "Hide !!";
+                    DOVirtual.DelayedCall(3f, () =>
+                    state = State.Play);
+                    break;
 
-            case State.Play:
-                if (sheepController.IsDead())
-                {
-                    Debug.Log("IsDead‚ªŒÄ‚Î‚ê‚ÄGameOver‚ðŒÄ‚Ñ‚Ü‚µ‚½");
-                    GameOver();
-                }
-                break;
+                case State.Play:
+                    stateText.text = "";
+                    if (sheepController.IsDead)
+                    {
+                        GameOver();
+                    }
+                    break;
 
-            case State.GameOver:
-                if (Input.GetButtonDown("Fire1"))
-                {
-                    Reload();
-                }
-                break;
+                case State.GameOver:
+
+                    stateText.text = "Go Retry";
+                    if (Input.GetKeyDown(KeyCode.Return))
+                    {
+                        Reload();
+                    }
+                    break;
+            }
         }
     }
 
@@ -64,7 +88,8 @@ public class GameManager : MonoBehaviour
 
     private void Reload()
     {
-        string currentSceneName = SceneManager.GetActiveScene().name;
-        SceneManager.LoadScene(currentSceneName);
+        string sceneName = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(sceneName);
     }
+
 }
