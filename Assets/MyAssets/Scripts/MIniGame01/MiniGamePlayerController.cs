@@ -5,11 +5,21 @@ public class MiniGamePlayerController : MonoBehaviour
 {
     //public MiniGamePlayerController miniGamePlayerController;
     Rigidbody2D rigid2D;
-    private const float JUMP_FORCE = 340.0f;
+    private const float JUMP_FORCE = 10.0f;
     private const float WALK_FORCE = 30.0f;
     private const float MAX_WALK_SPEED = 3.0f;
     [SerializeField] private bool isSafe = false;
     [SerializeField] private bool isDead = false;
+    [SerializeField] private bool isJumping;
+
+    public bool IsDead
+    {
+        get
+        {
+            //Debug.Log("isDeadÇ™ä“Ç≥ÇÍÇ‹ÇµÇΩ: " + isDead);
+            return this.isDead;
+        }
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -21,6 +31,7 @@ public class MiniGamePlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log(isDead + "Ç™ä“Ç≥ÇÍÇ‹ÇµÇΩ");
         if (!isDead)
         {
             Walk();
@@ -33,22 +44,17 @@ public class MiniGamePlayerController : MonoBehaviour
         if (other.CompareTag("Obstacles"))
         {
             isSafe = true;
+            Debug.Log("Obstacles In");
         }
 
         if (other.CompareTag("Wolf"))
         {
             if (!isSafe)
             {
-                Debug.Log("isDeadÇ™trueÇ…Ç»ÇËÇ‹ÇµÇΩ");
-                isDead = true;
+                //Debug.Log(isDead+"Ç™WolfÇ…êGÇÍÇ‹ÇµÇΩ");
+                this.isDead = true;
             }
         }
-    }
-
-    public bool IsDead()
-    {
-        Debug.Log("isDeadÇ™ä“Ç≥ÇÍÇ‹ÇµÇΩ");
-        return isDead;
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -57,6 +63,7 @@ public class MiniGamePlayerController : MonoBehaviour
         if (other.CompareTag("Obstacles"))
         {
             isSafe = false;
+            Debug.Log("Obstacles Out");
         }
 
     }
@@ -88,12 +95,33 @@ public class MiniGamePlayerController : MonoBehaviour
         }
     }
 
+    //private void Jump()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Space))
+    //    {
+    //        this.rigid2D.AddForce(transform.up * JUMP_FORCE);
+    //    }
+    //}
+
     private void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        //if (isDead) return;
+
+        if (Input.GetKeyDown(KeyCode.Space) && !isJumping)
         {
-            this.rigid2D.AddForce(transform.up * JUMP_FORCE);
+            Vector2 force = new Vector2(0, JUMP_FORCE);
+            this.rigid2D.AddForce(force, ForceMode2D.Impulse);
+
+            isJumping = true;
         }
+
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Ground"))
+        {
+            isJumping = false;
+        }
+    }
 }
