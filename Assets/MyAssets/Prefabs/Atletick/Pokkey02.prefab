@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -6731513049108946998}
   - component: {fileID: 7529722080966029829}
   m_Layer: 0
-  m_Name: Pokkey01 1
+  m_Name: Pokkey02
   m_TagString: Explosionable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
