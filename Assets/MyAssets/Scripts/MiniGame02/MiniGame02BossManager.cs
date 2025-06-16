@@ -14,7 +14,6 @@ public class MiniGame02BossManager : MonoBehaviour
     [SerializeField] MiniGame02_PlayerController _player; // プレイヤーの参照を設定する変数。
     [SerializeField] SpriteRenderer _bossSprite; // ボスのスプライトレンダラーを設定する変数。
     [SerializeField] MiniGame02Manager _miniGameManager; // ミニゲームマネージャーの参照を設定する変数。
-    [SerializeField] Transform[] _bossKnockBackTransforms; // ボスのTransformを設定する変数。
     [SerializeField] CinemachineCamera _bossCamera; // ボスのカメラを設定する変数。
 
     [SerializeField] public SerializableReactiveProperty<int> _bossHealth = new(3); // ボスの体力を管理するReactiveProperty。
@@ -59,25 +58,9 @@ public class MiniGame02BossManager : MonoBehaviour
                 _bossSprite.color = new Color(_bossSprite.color.r, _bossSprite.color.g, _bossSprite.color.b, 1f);
             });
 
-        // 残り体力に応じてノックバックさせ、位置まで移動させる。
-        switch (_bossHealth.Value)
-        {
-            case 2:
-                // ボスの体力が2のときのノックバック処理。
-                await this.transform.DOMoveX(_bossKnockBackTransforms[0].position.x, 1f)
-                    .SetEase(Ease.OutQuad)
-                    .AsyncWaitForCompletion();
-                break;
-            case 1:
-                // ボスの体力が1のときのノックバック処理。
-                await this.transform.DOMoveX(_bossKnockBackTransforms[1].position.x, 1f)
-                   .SetEase(Ease.OutQuad)
-                   .AsyncWaitForCompletion();
-                break;
-        }
-
+     
         // ノックバックが完了したら数秒待機
-        await UniTask.Delay(TimeSpan.FromSeconds(1));
+        await UniTask.Delay(TimeSpan.FromSeconds(3));
 
         // カメラの優先度を下げて演出終了。
         _bossCamera.Priority = 0;
