@@ -79,13 +79,12 @@ public class WolfJunpAction : MonoBehaviour
         Vector3 pos = new Vector3(x, spawnY, 0f);
 
         Instantiate(prefab, pos, Quaternion.identity);
-        // お菓子プレハブ側に Rigidbody2D（Gravity Scale=1 など）を設定しておくと自然落下します
+       
     }
 
     private void OnDrawGizmosSelected()
     {
-        // 爆風範囲など以前の Gizmo があればそのまま表示
-        // ここではお菓子の出現範囲を可視化する例も追加できます
+        // お菓子の出現範囲を表示
         Gizmos.color = Color.yellow;
         // 左→右の範囲を簡易的にラインで可視化
         Vector3 a = new Vector3(spawnXMin, spawnY, 0f);
