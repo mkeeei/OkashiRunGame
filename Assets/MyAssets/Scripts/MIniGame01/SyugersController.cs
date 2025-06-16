@@ -1,29 +1,41 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
+
+
 
 public class SyugersController : MonoBehaviour
 {
-
-    public class SmoothMove : MonoBehaviour
-    {
-        [SerializeField] public float moveSpeed = 5f; // 移動速度
-        [SerializeField] private Vector3 targetPosition; // 目標位置
+        private Rigidbody2D rigid2D;
+        [SerializeField] private int key = 1;
+        public float walkForce = 30.0f;
+        public float maxWalkSpeed = 5.0f;
 
         void Start()
         {
+            rigid2D = GetComponent<Rigidbody2D>();
         }
 
         void Update()
         {
-            // 横方向の入力を取得
-            float moveInput = Input.GetAxis("Horizontal");
+            Debug.Log("GUMI!!!!");
+            float speedx = Mathf.Abs(rigid2D.linearVelocity.x);
+            if (speedx < maxWalkSpeed)
+            {
+                rigid2D.linearVelocityX += 3.0f;
+            } 
+        }
 
-            // 目標位置を更新
-            targetPosition = new Vector3(moveInput * moveSpeed, transform.position.y, transform.position.z);
-
-            // 現在位置から目標位置へ滑らかに移動
-            transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * moveSpeed);
+        void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (collision.gameObject.CompareTag("Sheep"))
+            {
+                key = -key;
+            }
         }
     }
-}
+
+
+   
 
 
