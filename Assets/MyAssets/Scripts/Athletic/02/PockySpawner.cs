@@ -29,24 +29,41 @@ public class PockySpawner : MonoBehaviour
     [SerializeField] private float warningDuration = 1f;
     [SerializeField] private float warningOffsetX = -50f; // 画面端から内側へのオフセット
 
-    private async void Start()
+    private bool isSpawning = false;
+
+    /// <summary>
+    /// Athletic02Manager から Ready/Play/GameOver に応じて呼び出す
+    /// </summary>
+    public void SetActiveSpawner(bool active)
     {
-        // まず最初の遅延
+        isSpawning = active;
+        if (active)
+        {
+            // Play に入った瞬間だけ StartLoop を呼ぶ
+            SpawnLoop().Forget();
+        }
+    }
+
+    // メインのループ
+    private async UniTaskVoid SpawnLoop()
+    {
+        // 1) 初回遅延
         await UniTask.Delay(TimeSpan.FromSeconds(startDelay));
 
-        while (gameObject.activeInHierarchy)
+        // 2) ループ
+        while (isSpawning && gameObject.activeInHierarchy)
         {
-            // 1) 次の Y を決める
+            // 次のスポーン Y を決定
             float y = UnityEngine.Random.Range(spawnYMin, spawnYMax);
 
-            // 2) Warning を点滅表示して終わるまで待機
+            // Warning 表示＆完了待ち
             await ShowWarningAtWorldY(y);
 
-            // 3) Blink が終わったら敵を生成
+            // 敵を生成
             Vector3 spawnPos = new Vector3(spawnX, y, 0f);
             Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
 
-            // 4) 次の間隔まで待機
+            // 次の間隔まで待機
             float wait = UnityEngine.Random.Range(intervalMin, intervalMax);
             await UniTask.Delay(TimeSpan.FromSeconds(wait));
         }

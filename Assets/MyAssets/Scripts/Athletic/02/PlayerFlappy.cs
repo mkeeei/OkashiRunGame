@@ -115,14 +115,18 @@ public class PlayerFlappy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!isAlive) return;
-        if (invincibleTimer > 0f) return;
+        // クリア／ゲームオーバー中は何もしない
+        var mgr = FindFirstObjectByType<Athletic02Manager>();
+        if (mgr.State != Athletic02Manager.GameState.Play)
+            return;
 
-        currentLives--;
-        UpdateLifeUI();
+        if (invincibleTimer > 0f) return;
 
         if (currentLives > 0)
         {
+            currentLives--;
+            UpdateLifeUI();
+
             // 無敵時間をリセット＆点滅開始
             invincibleTimer = invincibleDuration;
             BlinkDuringInvincible().Forget();
