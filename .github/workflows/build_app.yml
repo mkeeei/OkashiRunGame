@@ -18,7 +18,7 @@ jobs:
         buildMethod:
           - BuildApp.Build
         unityPath:
-          - '"C:\Program Files\Unity\Hub\Editor\2020.3.33f1\Editor\Unity.exe"' #使用しているUnityのバージョンのパス
+          - '"C:\Program Files\Unity\Hub\Editor\6000.0.49f1\Editor\Unity.exe"' #使用しているUnityのバージョンのパス
     steps:
       - uses: actions/checkout@v4
         with:
