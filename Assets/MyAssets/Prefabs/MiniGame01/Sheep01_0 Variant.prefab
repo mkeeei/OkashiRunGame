@@ -102,5 +102,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85828cffbadf6e544ae507126d3aeb83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rigid2D: {fileID: 9116298070844436869}
   isSafe: 0
   isDead: 0
+  isJumping: 0
+--- !u!50 &9116298070844436869 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 7267970060291454122, guid: 122bb0b9b57706f40a18fa5fee2ad052, type: 3}
+  m_PrefabInstance: {fileID: 1900128203454432559}
+  m_PrefabAsset: {fileID: 0}

@@ -1806,7 +1806,7 @@ GameObject:
   - component: {fileID: 164105388}
   m_Layer: 0
   m_Name: RightKabe
-  m_TagString: Untagged
+  m_TagString: Sheep
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1936,7 +1936,7 @@ GameObject:
   - component: {fileID: 264618543}
   m_Layer: 0
   m_Name: WolfFiled (3)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2014,7 +2014,7 @@ GameObject:
   - component: {fileID: 324732925}
   m_Layer: 0
   m_Name: SheepFiled (3)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2515,7 +2515,7 @@ GameObject:
   - component: {fileID: 675112748}
   m_Layer: 0
   m_Name: WolfFiled
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2593,7 +2593,7 @@ GameObject:
   - component: {fileID: 699932195}
   m_Layer: 0
   m_Name: WolfFiled (2)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5375,7 +5375,7 @@ GameObject:
   - component: {fileID: 1405453138}
   m_Layer: 0
   m_Name: SheepFiled
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5453,7 +5453,7 @@ GameObject:
   - component: {fileID: 1461563804}
   m_Layer: 0
   m_Name: WolfFiled (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5573,7 +5573,7 @@ GameObject:
   - component: {fileID: 1511299583}
   m_Layer: 0
   m_Name: SheepFiled (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5821,7 +5821,7 @@ GameObject:
   - component: {fileID: 1617445542}
   m_Layer: 0
   m_Name: LeftKabe
-  m_TagString: Untagged
+  m_TagString: Sheep
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6036,7 +6036,7 @@ GameObject:
   - component: {fileID: 1726486132}
   m_Layer: 0
   m_Name: SheepFiled (2)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
