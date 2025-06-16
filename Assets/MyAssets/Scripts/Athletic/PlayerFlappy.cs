@@ -36,11 +36,13 @@ public class PlayerFlappy : MonoBehaviour
     private bool isAlive = true;
     private bool doFlap;
     private Rigidbody2D rb;
+    private float defaultGravity;
     private SpriteRenderer spriteRend;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        defaultGravity = rb.gravityScale; // 起動時の値を保存
         spriteRend = GetComponent<SpriteRenderer>();
     }
 
@@ -102,6 +104,14 @@ public class PlayerFlappy : MonoBehaviour
         doFlap = true;
     }
 
+    // Ready/Play 状態切り替え用メソッド
+    public void SetControlActive(bool active)
+    {
+        enabled = active;                     // Update/FixedUpdate の on/off
+        rb.gravityScale = active
+                          ? defaultGravity   // Play なら元に戻す
+                          : 0f;              // Ready は重力なし
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
