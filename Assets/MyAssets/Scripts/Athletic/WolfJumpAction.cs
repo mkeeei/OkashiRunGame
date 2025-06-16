@@ -4,7 +4,7 @@ using DG.Tweening;
 using Cysharp.Threading.Tasks;
 
 [RequireComponent(typeof(Collider2D))]
-public class WolfJunpAction : MonoBehaviour
+public class WolfJumpAction : MonoBehaviour
 {
     [Header("ジャンプ設定")]
     [SerializeField] private float minInterval = 1f;   // 待機時間の最小
@@ -29,17 +29,27 @@ public class WolfJunpAction : MonoBehaviour
     [Tooltip("お菓子の Y 座標固定値")]
     [SerializeField] private float spawnY = 6f;
 
-    private async void Start()
+
+    private void Start()
     {
         if (cameraTransform == null && Camera.main != null)
             cameraTransform = Camera.main.transform;
+    }
 
-        await JumpLoop();
+    // Manager から呼ばれる
+    public void SetActiveJump(bool active)
+    {
+        enabled = active;
+        if (active)
+        {
+            // Play 開始時点で初回 JumpLoop を走らせる
+            JumpLoop().Forget();
+        }
     }
 
     private async UniTask JumpLoop()
     {
-        while (gameObject.activeInHierarchy)
+        while (enabled && gameObject.activeInHierarchy)
         {
             // ランダム間隔で待機
             float waitSec = UnityEngine.Random.Range(minInterval, maxInterval);
