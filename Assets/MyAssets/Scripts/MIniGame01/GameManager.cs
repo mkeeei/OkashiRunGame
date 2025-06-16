@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private bool isGameOver = false;
     [SerializeField] private float timer = 0;
     [SerializeField] public TextMeshProUGUI stateText;
+    public Object Prefab_Transition;
 
     MiniGamePlayerController sheepController;
 
@@ -63,6 +64,7 @@ public class GameManager : MonoBehaviour
                 case State.GameOver:
 
                     stateText.text = "Go Retry";
+                    Time.timeScale = 0;
                     if (Input.GetKeyDown(KeyCode.Return))
                     {
                         Reload();
@@ -77,7 +79,6 @@ public class GameManager : MonoBehaviour
     {
         state = State.GameOver;
         isGameOver = true;
-        Time.timeScale = 0;
         animator.speed = 0;
     }
 
@@ -91,5 +92,6 @@ public class GameManager : MonoBehaviour
         string sceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(sceneName);
     }
+
 
 }

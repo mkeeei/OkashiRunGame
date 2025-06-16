@@ -56,6 +56,10 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 6343072505049265027, guid: 2bcd1d02837333f42831c29b635f555d, type: 3}
+      propertyPath: m_GravityScale
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -81,3 +85,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84f37cb60e4c40a4ab7633d61d37b476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  key: -1
+  walkForce: 30
+  maxWalkSpeed: 1
