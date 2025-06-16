@@ -8,13 +8,13 @@ public static class BuildApp
         //windows64のプラットフォームでアプリをビルドする
         BuildPipeline.BuildPlayer(
             new string[] { 
-                 "MyAssets/Scenes/TitleScene.unity",
-	            "MyAssets/Scenes/AthleticScene01.unity" , 
-	             "MyAssets/Scenes/MiniGameScene01.unity",
-	            "MyAssets/Scenes/AthleticScene02.unity" ,
-	             "MyAssets/Scenes/MiniGameScene02.unity" ,
-	            "MyAssets/Scenes/GameOverScene.unity" 
-	             
+                 "Assets/MyAssets/Scenes/TitleScene.unity",
+                "Assets/MyAssets/Scenes/AthleticScene01.unity" ,
+                 "Assets/MyAssets/Scenes/MiniGameScene01.unity",
+                "Assets/MyAssets/Scenes/AthleticScene02.unity" ,
+                 "Assets/MyAssets/Scenes/MiniGameScene02.unity" ,
+                "Assets/MyAssets/Scenes/GameOverScene.unity"
+
             },
             "Builds/App/OkashiRunGame.exe",
             BuildTarget.StandaloneWindows64,
