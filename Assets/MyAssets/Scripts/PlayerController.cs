@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Xml.Serialization;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement; // SceneManagerを使用するために追加
 
@@ -34,13 +35,12 @@ public class PlayerController : MonoBehaviour
         Run();
         Jump();
 
-        if (transform.position.y <= -5f)
+        if (transform.position.y <= -20f)
         {
             Destroy(gameObject);
             RestartGame(); // ゲームをリスタートするメソッドを呼び出し
 
         }
-
     }
 
     private void Run()
@@ -84,34 +84,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
-
-
-    //public void Die()
-    //{
-    //    Debug.Log("死にました");
-    //    isDead = true;
-    //    rb2d.linearVelocity = Vector2.zero; // 速度をゼロにして停止
-    //    //if (animator != null)
-    //    //{
-    //    //    animator.SetTrigger("Die");
-    //    //}
-    //}
-
     private void RestartGame()
     {
         // 現在のシーンを再読み込み
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-
-    //public void Revive()
-    //{
-    //    isDead = false;
-    //    rb2d.linearVelocity = Vector2.zero;
-    //    transform.rotation = Quaternion.identity;
-    //    if (animator != null)
-    //    {
-    //        animator.SetTrigger("Revive");
-    //    }
-    //}
 }
