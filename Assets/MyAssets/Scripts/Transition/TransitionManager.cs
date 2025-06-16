@@ -2,6 +2,8 @@
 
 using UnityEngine;
 using DG.Tweening;
+using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 
 public class TransitionManager : MonoBehaviour
 {
@@ -13,25 +15,27 @@ public class TransitionManager : MonoBehaviour
     [SerializeField] private SpriteMask _sheepSpriteMask; // 羊マスクのスプライトマスク
     private Vector3 _originalScaleSheep = new(3f, 3f, 1f); // 元のスケール
 
-  
+
     // 羊マスクのアウトメソッド（画面を黒くする方）。
-    public void SheepMaskOut()
+    public async UniTask SheepMaskOut()
     {
         // スプライトマスクの縮小アニメを開始。
-        _sheepSpriteMask.transform
+        await _sheepSpriteMask.transform
             .DOScale(Vector3.zero, _duration)
-            .SetEase(Ease.OutQuad);
+            .SetEase(Ease.OutQuad)
+            .AsyncWaitForCompletion();
     }
 
     // 羊マスクのインメソッド（画面を元に戻す方）。
-    public void SheepMaskIn()
+    public async UniTask SheepMaskIn()
     {
         // _sheepSpriteMaskのスケールをzeroに設定。
         _sheepSpriteMask.transform.localScale = Vector3.zero;
 
         // スプライトマスクの拡大アニメを開始。
-        _sheepSpriteMask.transform
-            .DOScale(_originalScaleSheep, _duration)
-            .SetEase(Ease.InQuad);
+        await _sheepSpriteMask.transform
+           .DOScale(_originalScaleSheep, _duration)
+           .SetEase(Ease.InQuad)
+           .AsyncWaitForCompletion();
     }
 }
