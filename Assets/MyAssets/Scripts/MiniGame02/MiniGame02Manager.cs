@@ -11,14 +11,15 @@ public class MiniGame02Manager : MonoBehaviour
     [SerializeField] MiniGame02_PlayerController _pcController; // プレイヤーコントローラーのスクリプト。
     [SerializeField] Transform _StartPoint; // プレイヤーの開始位置を格納するTransform。
     [SerializeField] MiniGame02BossManager _bossManager; // ボスエネミーの管理を行うスクリプト。
+    [SerializeField] MiniGame02Demo _demo; // デモの管理を行うスクリプト。
 
     [Header("アイテム配置")]
     [SerializeField] GameObject[] _itemSpawnPoint; // アイテムのスポーンポイントを格納する変数。
 
     void Start()
     {
-        // 初期化処理を呼び出す。
-        Initialize();
+        //// 初期化処理を呼び出す。
+        //Initialize();
 
         // ボスのHPを購読する。
         _bossManager._bossHealth.Subscribe(health =>
@@ -26,6 +27,9 @@ public class MiniGame02Manager : MonoBehaviour
             // ボスのHPが変動するたびに、アイテムの配置を更新する。
             UpdateItemPlacement();
         });
+
+        // デモ演出の開始。
+        _demo.DemoInitialize();
     }
 
 
