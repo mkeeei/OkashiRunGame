@@ -4,13 +4,13 @@ using UnityEngine;
 public class MiniGamePlayerController : MonoBehaviour
 {
     //public MiniGamePlayerController miniGamePlayerController;
-    Rigidbody2D rigid2D;
-    private const float JUMP_FORCE = 10.0f;
+    [SerializeField] private Rigidbody2D rigid2D;
+    private const float JUMP_FORCE = 8.0f;
     private const float WALK_FORCE = 30.0f;
     private const float MAX_WALK_SPEED = 3.0f;
     [SerializeField] private bool isSafe = false;
     [SerializeField] private bool isDead = false;
-    [SerializeField] private bool isJumping;
+    [SerializeField] private bool isJumping = false;
 
     public bool IsDead
     {
@@ -25,7 +25,6 @@ public class MiniGamePlayerController : MonoBehaviour
     void Start()
     {
         Application.targetFrameRate = 60;
-        rigid2D = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
