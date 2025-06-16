@@ -13,25 +13,7 @@ public class TransitionManager : MonoBehaviour
     [SerializeField] private SpriteMask _sheepSpriteMask; // 羊マスクのスプライトマスク
     private Vector3 _originalScaleSheep = new(3f, 3f, 1f); // 元のスケール
 
-    private void Update()
-    {
-        // デバッグ。スペースキーで羊マスクのアウトを実行。
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            SheepMaskOut();
-        }
-        // デバッグ。エンターキーで羊マスクのインを実行。
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            SheepMaskIn();
-        }
-    }
-
-    // 各スプライトの初期化メソッド。
-    public void Initialize()
-    {
-    }
-
+  
     // 羊マスクのアウトメソッド（画面を黒くする方）。
     public void SheepMaskOut()
     {
