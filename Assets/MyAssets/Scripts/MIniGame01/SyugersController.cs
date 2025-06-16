@@ -22,18 +22,20 @@ public class SyugersController : MonoBehaviour
             float speedx = Mathf.Abs(rigid2D.linearVelocity.x);
             if (speedx < maxWalkSpeed)
             {
-                rigid2D.linearVelocityX += 3.0f;
-            } 
+                this.rigid2D.AddForce(transform.right * key * walkForce);
+        } 
         }
 
         void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.gameObject.CompareTag("Sheep"))
+            if (collision.collider.CompareTag("Obstacles"))
+
             {
-                key = -key;
+                key = -(key);
             }
         }
-    }
+
+}
 
 
    

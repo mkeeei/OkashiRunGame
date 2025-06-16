@@ -60,6 +60,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sheep01_0 Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 2743591064656795353, guid: 122bb0b9b57706f40a18fa5fee2ad052, type: 3}
+      propertyPath: m_TagString
+      value: Sheep
+      objectReference: {fileID: 0}
     - target: {fileID: 7268976262820793784, guid: 122bb0b9b57706f40a18fa5fee2ad052, type: 3}
       propertyPath: m_Radius
       value: 0.33871973
@@ -103,7 +107,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigid2D: {fileID: 9116298070844436869}
-  isSafe: 0
+  JUMP_FORCE: 7
+  WALK_FORCE: 30
+  MAX_WALK_SPEED: 2
+  isSafe: 1
   isDead: 0
   isJumping: 0
 --- !u!50 &9116298070844436869 stripped

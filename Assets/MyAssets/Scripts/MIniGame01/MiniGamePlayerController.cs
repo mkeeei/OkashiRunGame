@@ -1,13 +1,14 @@
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MiniGamePlayerController : MonoBehaviour
 {
     //public MiniGamePlayerController miniGamePlayerController;
     [SerializeField] private Rigidbody2D rigid2D;
-    private const float JUMP_FORCE = 8.0f;
-    private const float WALK_FORCE = 30.0f;
-    private const float MAX_WALK_SPEED = 3.0f;
+    public float JUMP_FORCE = 8.0f;
+    public float WALK_FORCE = 30.0f;
+    public float MAX_WALK_SPEED = 3.0f;
     [SerializeField] private bool isSafe = false;
     [SerializeField] private bool isDead = false;
     [SerializeField] private bool isJumping = false;
@@ -36,6 +37,12 @@ public class MiniGamePlayerController : MonoBehaviour
             Walk();
             Jump();
         }
+
+        //if (transform.position.x > 9)
+        //{
+        //   GameObject fadeObject = Instantiate(Prefab_Transition);
+           //SceneManager.LoadScene("AthleticScene02");
+        //}
     }
 
     private void OnTriggerEnter2D(Collider2D other)
