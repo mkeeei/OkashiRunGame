@@ -1,5 +1,7 @@
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using TMPro;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -20,7 +22,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private bool isGameOver = false;
     [SerializeField] private float timer = 0;
     [SerializeField] public TextMeshProUGUI stateText;
-    public Object Prefab_Transition;
+    [SerializeField] TransitionManager transition;
 
     MiniGamePlayerController sheepController;
 
@@ -40,8 +42,14 @@ public class GameManager : MonoBehaviour
 
         if (timer >= 30.0f)
         {
-            stateText.text = "GO Run Way !!";
+            stateText.text = "GO Run Way !! Push Enter";
             state = State.GameClear;
+
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+
+                SceneChange();
+            }
         }
         else
         {
@@ -64,7 +72,6 @@ public class GameManager : MonoBehaviour
                 case State.GameOver:
 
                     stateText.text = "Go Retry";
-                    Time.timeScale = 0;
                     if (Input.GetKeyDown(KeyCode.Return))
                     {
                         Reload();
@@ -80,6 +87,7 @@ public class GameManager : MonoBehaviour
         state = State.GameOver;
         isGameOver = true;
         animator.speed = 0;
+        Time.timeScale = 0;
     }
 
     public bool IsGameOver()
@@ -91,6 +99,12 @@ public class GameManager : MonoBehaviour
     {
         string sceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(sceneName);
+    }
+
+    private async UniTaskVoid SceneChange()
+    {
+        await transition.SheepMaskOut();
+        SceneManager.LoadScene("AthleticScene02");
     }
 
 

@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_FlipX
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2014100082499919513, guid: 26a8ae3495b85554c9a2caf04b5eb221, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4724566025868720420, guid: 26a8ae3495b85554c9a2caf04b5eb221, type: 3}
       propertyPath: m_Name
       value: WolfEyeLeft

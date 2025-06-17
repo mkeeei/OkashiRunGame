@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3115569323305168962, guid: 7f587a4e3a46acd45823da859615bbc2, type: 3}
       propertyPath: m_Radius
-      value: 0.3014269
+      value: 0.27691698
       objectReference: {fileID: 0}
     - target: {fileID: 3115569323305168962, guid: 7f587a4e3a46acd45823da859615bbc2, type: 3}
       propertyPath: m_Offset.x
@@ -22,7 +22,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3115569323305168962, guid: 7f587a4e3a46acd45823da859615bbc2, type: 3}
       propertyPath: m_Offset.y
-      value: -0.0120226145
+      value: -0.016618013
       objectReference: {fileID: 0}
     - target: {fileID: 3626195743537419978, guid: 7f587a4e3a46acd45823da859615bbc2, type: 3}
       propertyPath: m_Constraints
@@ -30,7 +30,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3626195743537419978, guid: 7f587a4e3a46acd45823da859615bbc2, type: 3}
       propertyPath: m_GravityScale
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3866571845319820044, guid: 7f587a4e3a46acd45823da859615bbc2, type: 3}
       propertyPath: m_Size.x
@@ -88,7 +88,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3866571845319820044, guid: 7f587a4e3a46acd45823da859615bbc2, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -113,6 +114,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84f37cb60e4c40a4ab7633d61d37b476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: 1
-  walkForce: 30
-  maxWalkSpeed: 2
+  key: -1
+  walkForce: 60
+  maxWalkSpeed: 4

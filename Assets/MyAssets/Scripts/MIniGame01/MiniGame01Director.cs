@@ -16,17 +16,22 @@ public class MiniGame01Director : MonoBehaviour
     //    this.timeGarge.GetComponent<Image>().fillAmount -= Time.deltaTime;
     //}
 
-    public Image timeGarge;
+    [SerializeField] private GameObject timeGarge;
     public float duration = 30f; // 30ïbä‘Ç≈å∏è≠Ç≥ÇπÇÈ
 
     private float elapsedTime = 0f;
+
+    void Start()
+    {
+        this.timeGarge = GameObject.Find("TimeGarge");
+    }
 
     void Update()
     {
         if (timeGarge != null)
         {
             elapsedTime += Time.deltaTime;
-            timeGarge.fillAmount = Mathf.Lerp(1f, 0f, elapsedTime / duration);
+            this.timeGarge.GetComponent<Image>().fillAmount += (Time.deltaTime / duration);
         }
     }
 }

@@ -34,7 +34,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1964253995747196396, guid: 4b3cc1f05bf3e0844b6f727c41273d94, type: 3}
       propertyPath: m_GravityScale
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2001060741280117956, guid: 4b3cc1f05bf3e0844b6f727c41273d94, type: 3}
       propertyPath: m_LocalPosition.x
@@ -78,7 +78,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4504401244469036817, guid: 4b3cc1f05bf3e0844b6f727c41273d94, type: 3}
       propertyPath: m_Radius
-      value: 0.29449195
+      value: 0.283016
       objectReference: {fileID: 0}
     - target: {fileID: 4504401244469036817, guid: 4b3cc1f05bf3e0844b6f727c41273d94, type: 3}
       propertyPath: m_Offset.x
@@ -86,9 +86,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4504401244469036817, guid: 4b3cc1f05bf3e0844b6f727c41273d94, type: 3}
       propertyPath: m_Offset.y
-      value: -0.006411195
+      value: 0.0050647557
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1952635484603704238, guid: 4b3cc1f05bf3e0844b6f727c41273d94, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -114,5 +115,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: 1
-  walkForce: 40
-  maxWalkSpeed: 5
+  walkForce: 100
+  maxWalkSpeed: 8

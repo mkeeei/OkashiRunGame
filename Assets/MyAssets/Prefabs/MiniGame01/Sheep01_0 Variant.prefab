@@ -107,9 +107,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigid2D: {fileID: 9116298070844436869}
-  JUMP_FORCE: 7
+  JUMP_FORCE: 6
   WALK_FORCE: 30
-  MAX_WALK_SPEED: 2
+  MAX_WALK_SPEED: 2.5
   isSafe: 1
   isDead: 0
   isJumping: 0
