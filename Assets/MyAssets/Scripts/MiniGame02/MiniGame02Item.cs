@@ -17,6 +17,21 @@ public class MiniGame02Item : MonoBehaviour
         SpeedUp     // パワーアップ
     }
 
+    private void Start()
+    {
+        // _isGetItemを監視し、アイテムの取得状態が変化したときにDestroyItemメソッドを呼び出す。
+        _isGetItem.Subscribe(isGet => 
+        {
+            if (isGet)
+            {
+                DestroyItem(); // アイテムが取得された場合、DestroyItemメソッドを呼び出す。
+            }
+            else
+            {
+                RespawnItem(); // アイテムが未取得の場合、RespawnItemメソッドを呼び出す。
+            }
+        });
+    }
 
     // プレイヤーがアイテムに触れたときに呼び出されるメソッド。
     public void GetItem()
@@ -51,6 +66,13 @@ public class MiniGame02Item : MonoBehaviour
         _itemSprite.color = new Color(1f, 1f, 1f, 0.5f);
     }
 
+    // 復活処理。
+    public void RespawnItem()
+    {
+        // アイテムを再表示し、取得状態をリセット。
+        _itemSprite.color = new Color(1f, 1f, 1f, 1f);
+    }
+
     // 取得処理。
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -62,9 +84,6 @@ public class MiniGame02Item : MonoBehaviour
 
             // アイテム取得状態を更新。
             ToggleGetItem(true);
-
-            // 自身を消去。
-            DestroyItem();
         }
     }
 }

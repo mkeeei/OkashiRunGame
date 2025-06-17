@@ -2,7 +2,6 @@
 
 using UnityEngine;
 using DG.Tweening;
-using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 
 public class TransitionManager : MonoBehaviour
