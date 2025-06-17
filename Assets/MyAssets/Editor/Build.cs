@@ -1,13 +1,13 @@
 using UnityEditor;
 
-public static class BuildApp 
+public static class BuildApp
 {
     [MenuItem("Build/BuildApp")]
     public static void Build()
     {
         //windows64のプラットフォームでアプリをビルドする
         BuildPipeline.BuildPlayer(
-            new string[] { 
+            new string[] {
                  "Assets/MyAssets/Scenes/TitleScene.unity",
                 "Assets/MyAssets/Scenes/AthleticScene01.unity" ,
                  "Assets/MyAssets/Scenes/MiniGameScene01.unity",

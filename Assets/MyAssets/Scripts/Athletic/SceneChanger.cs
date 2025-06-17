@@ -1,23 +1,25 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
+using Cysharp.Threading.Tasks;
 
 public class SceneChanger : MonoBehaviour
 {
-    GameObject player;
-    public void Start()
-    {
-        this.player = GameObject.Find("Sheep01_0");
-    }
+    [SerializeField] private string sceneName = "MiniGameScene01"; // 遷移先のシーン名
+    [SerializeField] private TransitionManager transitionManager; // アニメーションPrefab
 
-    public void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("シーン遷移前");
-        if (other.CompareTag("SceneChange")) // colliderタグのオブジェクトと接触した場合
+        if (other.CompareTag("Sheep"))
         {
-            Debug.Log("シーン遷移");
-
-            SceneManager.LoadScene("MiniGameScene01"); // シーンを切り替える
+            WaitAnim().Forget();
         }
     }
-}
 
+    async UniTask WaitAnim()
+    {
+        await transitionManager.SheepMaskOut();
+        // アニメーションが完了したらシーン遷移
+        SceneManager.LoadScene(sceneName);
+    }
+}
