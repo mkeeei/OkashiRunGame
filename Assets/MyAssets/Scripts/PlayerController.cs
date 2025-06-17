@@ -20,7 +20,6 @@ public class PlayerController : MonoBehaviour
 
     private bool isJumping = false;
     private bool isRunning = false;
-    private bool isDead = false;
 
 
     private void Start()
@@ -42,7 +41,6 @@ public class PlayerController : MonoBehaviour
 
         }
     }
-
     private void Run()
     {
 
@@ -62,7 +60,6 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-
     private void Jump()
     {
 
@@ -75,7 +72,6 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Ground"))
