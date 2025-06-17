@@ -12,6 +12,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: GumiAka01 Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 3115569323305168962, guid: 7f587a4e3a46acd45823da859615bbc2, type: 3}
+      propertyPath: m_Radius
+      value: 0.3014269
+      objectReference: {fileID: 0}
+    - target: {fileID: 3115569323305168962, guid: 7f587a4e3a46acd45823da859615bbc2, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.0065746307
+      objectReference: {fileID: 0}
+    - target: {fileID: 3115569323305168962, guid: 7f587a4e3a46acd45823da859615bbc2, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.0120226145
+      objectReference: {fileID: 0}
     - target: {fileID: 3626195743537419978, guid: 7f587a4e3a46acd45823da859615bbc2, type: 3}
       propertyPath: m_Constraints
       value: 4
@@ -19,6 +31,22 @@ PrefabInstance:
     - target: {fileID: 3626195743537419978, guid: 7f587a4e3a46acd45823da859615bbc2, type: 3}
       propertyPath: m_GravityScale
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3866571845319820044, guid: 7f587a4e3a46acd45823da859615bbc2, type: 3}
+      propertyPath: m_Size.x
+      value: 0.5496874
+      objectReference: {fileID: 0}
+    - target: {fileID: 3866571845319820044, guid: 7f587a4e3a46acd45823da859615bbc2, type: 3}
+      propertyPath: m_Size.y
+      value: 0.36217308
+      objectReference: {fileID: 0}
+    - target: {fileID: 3866571845319820044, guid: 7f587a4e3a46acd45823da859615bbc2, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.0011954308
+      objectReference: {fileID: 0}
+    - target: {fileID: 3866571845319820044, guid: 7f587a4e3a46acd45823da859615bbc2, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.06960511
       objectReference: {fileID: 0}
     - target: {fileID: 5863584260041319013, guid: 7f587a4e3a46acd45823da859615bbc2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -87,4 +115,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   key: 1
   walkForce: 30
-  maxWalkSpeed: 4
+  maxWalkSpeed: 2

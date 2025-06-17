@@ -2,7 +2,6 @@ using DG.Tweening;
 using R3;
 using Unity.Cinemachine;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class MiniGame02Manager : MonoBehaviour
 {

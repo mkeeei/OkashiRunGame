@@ -12,6 +12,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: GumiBlue01 Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 1952635484603704238, guid: 4b3cc1f05bf3e0844b6f727c41273d94, type: 3}
+      propertyPath: m_Size.x
+      value: 0.5254035
+      objectReference: {fileID: 0}
+    - target: {fileID: 1952635484603704238, guid: 4b3cc1f05bf3e0844b6f727c41273d94, type: 3}
+      propertyPath: m_Size.y
+      value: 0.3701756
+      objectReference: {fileID: 0}
+    - target: {fileID: 1952635484603704238, guid: 4b3cc1f05bf3e0844b6f727c41273d94, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.0073444843
+      objectReference: {fileID: 0}
+    - target: {fileID: 1952635484603704238, guid: 4b3cc1f05bf3e0844b6f727c41273d94, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.07360637
+      objectReference: {fileID: 0}
     - target: {fileID: 1964253995747196396, guid: 4b3cc1f05bf3e0844b6f727c41273d94, type: 3}
       propertyPath: m_Constraints
       value: 4
@@ -60,6 +76,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4504401244469036817, guid: 4b3cc1f05bf3e0844b6f727c41273d94, type: 3}
+      propertyPath: m_Radius
+      value: 0.29449195
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504401244469036817, guid: 4b3cc1f05bf3e0844b6f727c41273d94, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.0077083707
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504401244469036817, guid: 4b3cc1f05bf3e0844b6f727c41273d94, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.006411195
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -86,5 +114,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: 1
-  walkForce: 30
-  maxWalkSpeed: 8
+  walkForce: 40
+  maxWalkSpeed: 5
