@@ -122,17 +122,24 @@ public class PlayerFlappy : MonoBehaviour
 
         if (invincibleTimer > 0f) return;
 
+        currentLives--;
+
+        if(currentLives < 0)
+        {
+            currentLives = 0;
+        }
+
+        UpdateLifeUI();
+
         if (currentLives > 0)
         {
-            currentLives--;
-            UpdateLifeUI();
-
             // 無敵時間をリセット＆点滅開始
             invincibleTimer = invincibleDuration;
             BlinkDuringInvincible().Forget();
         }
         else
         {
+
             // ライフ０：ひっくり返って落下
             isAlive = false;
 
