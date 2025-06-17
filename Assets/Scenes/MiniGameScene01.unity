@@ -2101,7 +2101,7 @@ GameObject:
   - component: {fileID: 392572794}
   m_Layer: 0
   m_Name: RightKabe (1)
-  m_TagString: Obstacles
+  m_TagString: GumiRed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2155,7 +2155,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -8.544051, y: -2.1906242}
+  m_Offset: {x: -8.618847, y: -2.1906242}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2165,7 +2165,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.55104256, y: 5.7270575}
+  m_Size: {x: 0.70063496, y: 5.7270575}
   m_EdgeRadius: 0
 --- !u!1 &407622479
 GameObject:
@@ -2569,7 +2569,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.4734733, y: 0}
+  m_Offset: {x: -0.4886682, y: 0.0075975657}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2579,7 +2579,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.9469466, y: 1}
+  m_Size: {x: 1.4303088, y: 0.8328521}
   m_EdgeRadius: 0
 --- !u!1 &699932193
 GameObject:
@@ -2647,7 +2647,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.49588895, y: 0}
+  m_Offset: {x: 0.53387785, y: 0.04558575}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2657,7 +2657,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.9917779, y: 1}
+  m_Size: {x: 1.672678, y: 0.9088285}
   m_EdgeRadius: 0
 --- !u!1 &796485307
 GameObject:
@@ -5507,7 +5507,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.9917803, y: 0}
+  m_Offset: {x: 0.9841826, y: 0.007597506}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -5517,7 +5517,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.9835606, y: 1}
+  m_Size: {x: 2.6340718, y: 0.83285224}
   m_EdgeRadius: 0
 --- !u!1 &1482725250
 GameObject:
@@ -5914,7 +5914,7 @@ GameObject:
   - component: {fileID: 1617445542}
   m_Layer: 0
   m_Name: LeftKabe
-  m_TagString: Obstacles
+  m_TagString: GumiBlue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5968,7 +5968,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -8.544051, y: -2.1906242}
+  m_Offset: {x: -8.544052, y: -2.1906242}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -5978,7 +5978,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.55104256, y: 5.7270575}
+  m_Size: {x: 0.6422119, y: 5.7270575}
   m_EdgeRadius: 0
 --- !u!1 &1701257970
 GameObject:
@@ -6411,7 +6411,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98da782798585904696217d925ff5637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeGarge: {fileID: 0}
+  timeGarge: {fileID: 1522350539}
+  duration: 30
 --- !u!4 &1760797338
 Transform:
   m_ObjectHideFlags: 0
@@ -6705,7 +6706,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: babcb4e1fb3687345ad9c4e03c939fac, type: 2}
+  - {fileID: 2100000, guid: b144e3b781b78ae4cac1b9b128c94e36, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

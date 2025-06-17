@@ -12,13 +12,41 @@ PrefabInstance:
       propertyPath: m_Name
       value: GumiGreen01 Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 3091795852386637229, guid: 2bcd1d02837333f42831c29b635f555d, type: 3}
+      propertyPath: m_Size.x
+      value: 0.52285147
+      objectReference: {fileID: 0}
+    - target: {fileID: 3091795852386637229, guid: 2bcd1d02837333f42831c29b635f555d, type: 3}
+      propertyPath: m_Size.y
+      value: 0.35601354
+      objectReference: {fileID: 0}
+    - target: {fileID: 3091795852386637229, guid: 2bcd1d02837333f42831c29b635f555d, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.0068609715
+      objectReference: {fileID: 0}
+    - target: {fileID: 3091795852386637229, guid: 2bcd1d02837333f42831c29b635f555d, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.06652534
+      objectReference: {fileID: 0}
+    - target: {fileID: 5073512266743993142, guid: 2bcd1d02837333f42831c29b635f555d, type: 3}
+      propertyPath: m_Radius
+      value: 0.29913592
+      objectReference: {fileID: 0}
+    - target: {fileID: 5073512266743993142, guid: 2bcd1d02837333f42831c29b635f555d, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.00405097
+      objectReference: {fileID: 0}
+    - target: {fileID: 5073512266743993142, guid: 2bcd1d02837333f42831c29b635f555d, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.011017323
+      objectReference: {fileID: 0}
     - target: {fileID: 6164034961416274766, guid: 2bcd1d02837333f42831c29b635f555d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.542094
+      value: -7.1797
       objectReference: {fileID: 0}
     - target: {fileID: 6164034961416274766, guid: 2bcd1d02837333f42831c29b635f555d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.3449562
+      value: -3.447
       objectReference: {fileID: 0}
     - target: {fileID: 6164034961416274766, guid: 2bcd1d02837333f42831c29b635f555d, type: 3}
       propertyPath: m_LocalPosition.z

@@ -12,9 +12,9 @@ public class SyugersManager : MonoBehaviour
         GameObject go1 = Instantiate(gumiGreenPrefab);
         go1.transform.position = new Vector3(-4, 6, 0);
         GameObject go2 = Instantiate(gumiBluePrefab);
-        go2.transform.position = new Vector3(-4, 8, 0);
+        go2.transform.position = new Vector3(-2, 8, 0);
         GameObject go3 = Instantiate(gumiAkaPrefab);
-        go3.transform.position = new Vector3(-4, 7, 0);
+        go3.transform.position = new Vector3(4, 7, 0);
 
     }
 
