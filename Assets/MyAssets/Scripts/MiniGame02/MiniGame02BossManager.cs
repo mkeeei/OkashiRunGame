@@ -1,7 +1,6 @@
 // ミニゲームシーン02におけるボスエネミーのクラス。
 
 using System;
-using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using R3;
@@ -51,17 +50,13 @@ public class MiniGame02BossManager : MonoBehaviour
         _bossCamera.Priority = 11;
 
         // 点滅させる。
-        _bossSprite.DOFade(0f, 0.15f).SetLoops(8, LoopType.Yoyo)
+        await _bossSprite.DOFade(0f, 0.15f).SetLoops(8, LoopType.Yoyo)
             .OnComplete(() =>
             {
                 // 点滅終了後に透明度を元に戻す。
                 _bossSprite.color = new Color(_bossSprite.color.r, _bossSprite.color.g, _bossSprite.color.b, 1f);
             });
-
      
-        // ノックバックが完了したら数秒待機
-        await UniTask.Delay(TimeSpan.FromSeconds(3));
-
         // カメラの優先度を下げて演出終了。
         _bossCamera.Priority = 0;
 
@@ -75,14 +70,21 @@ public class MiniGame02BossManager : MonoBehaviour
         // プレイヤータグを確認。
         if (collision.gameObject.CompareTag("Player"))
         {
-            // プレイヤーを弾き飛ばす処理を呼び出す。
-            _miniGameManager.KnockBackPlayer();
+            Debug.Log("プレイヤー触れてる");
 
             // プレイヤーの速度が十分であれば、ボスにダメージを与える。
             if (_player._moveLevel >= _koMoveLevel.Value)
             {
+                // プレイヤーを弾き飛ばす処理を呼び出す。
+                _miniGameManager.KnockBackPlayer();
+
                 // ボスの被弾処理を呼び出す。
                 OnBossHit().Forget();
+            }
+            else
+            {
+                // 速度が足りない場合、プレイヤーをダウン。
+                _player.PCKnockOut().Forget();
             }
         }
     }
