@@ -5408,7 +5408,6 @@ MonoBehaviour:
   jumpForce: 6
   maxHeight: 7
   rb2d: {fileID: 7267970059929151629}
-  sweets: {fileID: 0}
 --- !u!1 &978732130
 GameObject:
   m_ObjectHideFlags: 0
@@ -8085,7 +8084,6 @@ GameObject:
   - component: {fileID: 7416126928339846427}
   - component: {fileID: 7267970059929151629}
   - component: {fileID: 7956214756332574763}
-  - component: {fileID: 7656230488122589891}
   - component: {fileID: 101309541027819990}
   - component: {fileID: 945490487}
   m_Layer: 0
@@ -9458,18 +9456,6 @@ Transform:
   - {fileID: 6125043871416883225}
   m_Father: {fileID: 3938330346958838163}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7656230488122589891
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2743591065370299134}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &7764147989285508952
 BoxCollider2D:
   m_ObjectHideFlags: 0

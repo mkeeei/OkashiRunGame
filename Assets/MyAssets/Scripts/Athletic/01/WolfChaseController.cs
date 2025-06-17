@@ -8,7 +8,6 @@ public class WolfChaseController : MonoBehaviour
     public float speed = 3.5f; // 追従キャラクターの移動速度
 
     [SerializeField] private GameObject sweets;
-    private bool isCoroutineRunning = false;
 
     void Update()
     {
@@ -34,13 +33,11 @@ public class WolfChaseController : MonoBehaviour
     }
     private IEnumerator DestroySweetsAfterDelay(GameObject sweets)
     {
-        isCoroutineRunning = true;
 
         // 1秒待機
         yield return new WaitForSeconds(1f);
 
         Destroy(sweets);
 
-        isCoroutineRunning = false;
     }
 }
