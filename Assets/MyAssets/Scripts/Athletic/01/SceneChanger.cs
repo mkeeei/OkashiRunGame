@@ -8,6 +8,7 @@ public class SceneChanger : MonoBehaviour
     [SerializeField] private string sceneName = "MiniGameScene01"; // 遷移先のシーン名
     [SerializeField] private TransitionManager transitionManager; // アニメーションPrefab
 
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Sheep"))

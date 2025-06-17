@@ -305,8 +305,8 @@ Transform:
   m_GameObject: {fileID: 207622768}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 142.77, y: -1.51, z: 0}
-  m_LocalScale: {x: 0.4104801, y: 1.56907, z: 1.4596}
+  m_LocalPosition: {x: 143.99, y: -0.49, z: 0}
+  m_LocalScale: {x: 0.51310015, y: 0.64724135, z: 1.4596}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 978732132}
@@ -5408,6 +5408,7 @@ MonoBehaviour:
   jumpForce: 6
   maxHeight: 7
   rb2d: {fileID: 7267970059929151629}
+  transitionManager: {fileID: 1296183710}
 --- !u!1 &978732130
 GameObject:
   m_ObjectHideFlags: 0

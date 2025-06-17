@@ -19,7 +19,6 @@ public class PlayerController : MonoBehaviour
 
     private bool isJumping = false;
 
-
     void Update()
     {
         Run();
