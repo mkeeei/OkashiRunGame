@@ -1,4 +1,4 @@
-using System.Transactions;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,7 +7,7 @@ public class GoalTrigger : MonoBehaviour
 {
     [Header("次にロードするシーン名")]
     [SerializeField] private string nextSceneName;
-
+    [SerializeField] PlayerFlappy player;
     [SerializeField] TransitionManager transition;
 
     private bool hasCleared = false;
@@ -21,22 +21,25 @@ public class GoalTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // 一度だけ発火
         if (hasCleared) return;
 
-        // PlayerFlappy コンポーネントを持つものをプレイヤーと見なす
         if (other.TryGetComponent<PlayerFlappy>(out _))
         {
             hasCleared = true;
-            // もし演出が必要ならここで BGM 止めたり、アニメーションを流してから遷移してもOK
 
-            transition.SheepMaskOut();
+            // 1) State を Clear に切り替え
+            var mgr = FindFirstObjectByType<Athletic02Manager>();
+            mgr?.OnPlayerClear();
 
-            Debug.Log("ステージクリア！");
-            Time.timeScale = 0;
-            
-            // 直接次のシーンをロード
-            SceneManager.LoadScene(nextSceneName);
+            // 2) 非同期でトランジション→シーン切り替え
+            DoTransition().Forget();
         }
+    }
+
+    private async UniTaskVoid DoTransition()
+    {
+        await transition.SheepMaskOut();
+
+        SceneManager.LoadScene(nextSceneName);
     }
 }

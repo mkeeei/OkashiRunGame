@@ -15,6 +15,9 @@ public class ScrollGround : MonoBehaviour
     // 最初にタイルマップのセル範囲をキャッシュしておく
     private BoundsInt tileBounds;
 
+    // スクロールの実行フラグ
+    private bool isScrolling = false;
+
     private void Start()
     {
 
@@ -23,6 +26,8 @@ public class ScrollGround : MonoBehaviour
 
     private void Update()
     {
+        if (!isScrolling) return;   // フラグが立っていないなら何もしない
+
         // 1. 左方向にスクロール
         transform.Translate(Vector3.left * speed * Time.deltaTime);
 
@@ -43,4 +48,10 @@ public class ScrollGround : MonoBehaviour
             }
         }
     }
+
+    /// <summary>スクロールを開始する（Play時に呼ぶ）</summary>
+    public void StartScroll() => isScrolling = true;
+
+    /// <summary>スクロールを停止する（Ready/GameOver時に呼ぶ）</summary>
+    public void StopScroll() => isScrolling = false;
 }

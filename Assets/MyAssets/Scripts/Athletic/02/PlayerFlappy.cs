@@ -115,10 +115,20 @@ public class PlayerFlappy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!isAlive) return;
+        // クリア／ゲームオーバー中は何もしない
+        var mgr = FindFirstObjectByType<Athletic02Manager>();
+        if (mgr.State != Athletic02Manager.GameState.Play)
+            return;
+
         if (invincibleTimer > 0f) return;
 
         currentLives--;
+
+        if(currentLives < 0)
+        {
+            currentLives = 0;
+        }
+
         UpdateLifeUI();
 
         if (currentLives > 0)
@@ -129,6 +139,7 @@ public class PlayerFlappy : MonoBehaviour
         }
         else
         {
+
             // ライフ０：ひっくり返って落下
             isAlive = false;
 

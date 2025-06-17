@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Athletic02Manager : MonoBehaviour
 {
-    public enum GameState { Ready, Play, GameOver }
+    public enum GameState { Ready, Play, GameOver, Clear }
     public GameState State { get; private set; }
 
     [Header("UI")]
@@ -14,6 +14,12 @@ public class Athletic02Manager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI gameOverText;
     [SerializeField] private TextMeshProUGUI lifeText;
     [SerializeField] private TextMeshProUGUI distanceText;
+
+    [Header("Ground スクロール")]
+    [SerializeField] private ScrollGround scrollGround;
+
+    [Header("Pocky スポナー")]
+    [SerializeField] private PockySpawner pockySpawner;
 
     [Header("参照")]
     [SerializeField] private PlayerFlappy playerFlappy;
@@ -66,43 +72,74 @@ public class Athletic02Manager : MonoBehaviour
         switch (newState)
         {
             case GameState.Ready:
+                // ゲーム全体は動かす
+                Time.timeScale = 1f;
+
                 // プレイヤー操作停止＆重力オフ
                 playerFlappy.SetControlActive(false);
                 // Wolf のジャンプ停止
                 wolfJumpAction.SetActiveJump(false);
+                // Groundのスクロール停止
+                scrollGround.StopScroll();
+                // Pockyの生成停止
+                pockySpawner.SetActiveSpawner(false);
 
+                // UI表示切り替え
                 readyText.gameObject.SetActive(true);
                 gameOverText.gameObject.SetActive(false);
                 lifeText.gameObject.SetActive(false);
                 distanceText.gameObject.SetActive(false);
+
                 SetPlayerEnabled(false);
                 break;
 
             case GameState.Play:
+                Time.timeScale = 1f;
+
                 // プレイヤー操作再開＆重力オン
                 playerFlappy.SetControlActive(true);
-                // Wolf ジャンプ開始＆重力オン
-                wolfJumpAction.SetActiveJump(true);
+                // Groundのスクロール開始
+                scrollGround.StartScroll();
+                // Pockyの生成開始
+                pockySpawner.SetActiveSpawner(true);
 
+                // UI 表示切り替え
                 readyText.gameObject.SetActive(false);
                 gameOverText.gameObject.SetActive(false);
                 lifeText.gameObject.SetActive(true);
                 distanceText.gameObject.SetActive(true);
-                SetPlayerEnabled(true);
 
-                WolfEntrance().Forget();
-
-                if (playerFlappy != null)
-                    playerFlappy.TriggerFlap();
+                // 初回フラップ
+                playerFlappy?.TriggerFlap();
+                WolfSequence().Forget();
                 break;
 
             case GameState.GameOver:
+                // 画面を止める
                 Time.timeScale = 0f;
+
+                // UI 表示切り替え
                 readyText.gameObject.SetActive(false);
                 gameOverText.gameObject.SetActive(true);
                 lifeText.gameObject.SetActive(true);
                 distanceText.gameObject.SetActive(true);
+
                 SetPlayerEnabled(false);
+                break;
+
+            case GameState.Clear:
+
+                // プレイヤーやその他ギミックを止める
+                playerFlappy.SetControlActive(false);
+                wolfJumpAction.SetActiveJump(false);
+                scrollGround.StopScroll();
+                pockySpawner.SetActiveSpawner(false);
+
+                // UI 切り替え
+                readyText.gameObject.SetActive(false);
+                gameOverText.gameObject.SetActive(false);
+                lifeText.gameObject.SetActive(false);
+                distanceText.gameObject.SetActive(false);
                 break;
         }
     }
@@ -119,13 +156,29 @@ public class Athletic02Manager : MonoBehaviour
             SetState(GameState.GameOver);
     }
 
+    public void OnPlayerClear()
+    {
+        if (State == GameState.Play)
+            SetState(GameState.Clear);
+    }
+
+    // 侵入アニメが終わるまで待ってから WolfJumpAction を起動
+    private async UniTaskVoid WolfSequence()
+    {
+        // 1) 侵入アニメ
+        await WolfEntrance();
+
+        // 2) ジャンプスクリプト起動
+        wolfJumpAction.SetActiveJump(true);
+    }
+
     private void ReloadScene()
     {
         // 現在のシーンを再読み込み
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    private async UniTaskVoid WolfEntrance()
+    private async UniTask WolfEntrance()
     {
         if (wolfTransform == null) return;
 
