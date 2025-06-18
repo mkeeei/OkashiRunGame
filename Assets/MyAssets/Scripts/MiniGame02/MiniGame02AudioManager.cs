@@ -40,6 +40,14 @@ public class MiniGame02AudioManager : MonoBehaviour
     }
 
     /// <summary>
+    /// ボス戦BGMの再生を停止します。
+    /// </summary>
+    public void StopBossBGM()
+    {
+        _bgmAudioSource.Stop();
+    }
+
+    /// <summary>
     /// BGMの再生を停止します。
     /// </summary>
     public void StopBGM()

@@ -12,6 +12,7 @@ public class MiniGame02Demo : MonoBehaviour
     [Header("ミニゲーム管理")]
     [SerializeField] MiniGame02Manager _miniGameManager; // ミニゲームの管理を行うスクリプト。
     [SerializeField] MiniGame02BossManager _bossManager; // ボスエネミーの管理を行うスクリプト。
+    [SerializeField] MiniGame02AudioManager _audioManager; // ミニゲームのオーディオ管理を行うスクリプト。
 
     // プレイヤー関連
     [Header("プレイヤー設定")]
@@ -48,6 +49,9 @@ public class MiniGame02Demo : MonoBehaviour
     // デモの開始メソッド。
     public async UniTask DemoStart()
     {
+        // BGMを開始。
+        _audioManager.PlayBossBGM(); 
+
         // PCの移動を無効化。
         _pcController.ToggleCanMove(false);
 
@@ -108,6 +112,9 @@ public class MiniGame02Demo : MonoBehaviour
     // ボスが倒されたときのデモ処理。
     public async UniTask DemoBossDefeated()
     {
+        // BGMを停止。
+        _audioManager.StopBossBGM(); // ボスのBGMを停止。
+
         // Sequenceを作成
         var _sequence = DOTween.Sequence();
 

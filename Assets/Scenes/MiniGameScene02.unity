@@ -135,6 +135,10 @@ PrefabInstance:
       propertyPath: itemType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 943551553089503274, guid: 4cdbd539ecc62a84d9002552e0735fd3, type: 3}
+      propertyPath: _audioManager
+      value: 
+      objectReference: {fileID: 1732755245}
     - target: {fileID: 2146606076959064757, guid: 4cdbd539ecc62a84d9002552e0735fd3, type: 3}
       propertyPath: m_Name
       value: Item_SpeedUp
@@ -383,6 +387,10 @@ PrefabInstance:
       propertyPath: itemType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 943551553089503274, guid: 4cdbd539ecc62a84d9002552e0735fd3, type: 3}
+      propertyPath: _audioManager
+      value: 
+      objectReference: {fileID: 1732755245}
     - target: {fileID: 2146606076959064757, guid: 4cdbd539ecc62a84d9002552e0735fd3, type: 3}
       propertyPath: m_Name
       value: Item_SpeedUp (1)
@@ -994,6 +1002,10 @@ PrefabInstance:
       propertyPath: itemType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 943551553089503274, guid: 4cdbd539ecc62a84d9002552e0735fd3, type: 3}
+      propertyPath: _audioManager
+      value: 
+      objectReference: {fileID: 1732755245}
     - target: {fileID: 2146606076959064757, guid: 4cdbd539ecc62a84d9002552e0735fd3, type: 3}
       propertyPath: m_Name
       value: Item_SpeedUp (3)
@@ -1075,6 +1087,10 @@ PrefabInstance:
       propertyPath: itemType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 943551553089503274, guid: 4cdbd539ecc62a84d9002552e0735fd3, type: 3}
+      propertyPath: _audioManager
+      value: 
+      objectReference: {fileID: 1732755245}
     - target: {fileID: 2146606076959064757, guid: 4cdbd539ecc62a84d9002552e0735fd3, type: 3}
       propertyPath: m_Name
       value: Item_SpeedUp (1)
@@ -1258,6 +1274,10 @@ PrefabInstance:
       propertyPath: itemType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 943551553089503274, guid: 4cdbd539ecc62a84d9002552e0735fd3, type: 3}
+      propertyPath: _audioManager
+      value: 
+      objectReference: {fileID: 1732755245}
     - target: {fileID: 2146606076959064757, guid: 4cdbd539ecc62a84d9002552e0735fd3, type: 3}
       propertyPath: m_Name
       value: Item_SpeedUp (3)
@@ -1408,6 +1428,10 @@ PrefabInstance:
       propertyPath: itemType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 943551553089503274, guid: 4cdbd539ecc62a84d9002552e0735fd3, type: 3}
+      propertyPath: _audioManager
+      value: 
+      objectReference: {fileID: 1732755245}
     - target: {fileID: 2146606076959064757, guid: 4cdbd539ecc62a84d9002552e0735fd3, type: 3}
       propertyPath: m_Name
       value: Item_SpeedUp
@@ -1478,6 +1502,10 @@ PrefabInstance:
       propertyPath: itemType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 943551553089503274, guid: 4cdbd539ecc62a84d9002552e0735fd3, type: 3}
+      propertyPath: _audioManager
+      value: 
+      objectReference: {fileID: 1732755245}
     - target: {fileID: 2146606076959064757, guid: 4cdbd539ecc62a84d9002552e0735fd3, type: 3}
       propertyPath: m_Name
       value: Item_SpeedUp (2)
@@ -1548,6 +1576,10 @@ PrefabInstance:
       propertyPath: itemType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 943551553089503274, guid: 4cdbd539ecc62a84d9002552e0735fd3, type: 3}
+      propertyPath: _audioManager
+      value: 
+      objectReference: {fileID: 1732755245}
     - target: {fileID: 2146606076959064757, guid: 4cdbd539ecc62a84d9002552e0735fd3, type: 3}
       propertyPath: m_Name
       value: Item_SpeedUp (3)
@@ -1613,6 +1645,10 @@ PrefabInstance:
       propertyPath: itemType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 943551553089503274, guid: 4cdbd539ecc62a84d9002552e0735fd3, type: 3}
+      propertyPath: _audioManager
+      value: 
+      objectReference: {fileID: 1732755245}
     - target: {fileID: 2146606076959064757, guid: 4cdbd539ecc62a84d9002552e0735fd3, type: 3}
       propertyPath: m_Name
       value: Item_SpeedUp (1)
@@ -2252,6 +2288,7 @@ MonoBehaviour:
   _rb: {fileID: 1062544056}
   _transitionManager: {fileID: 752599256}
   _miniGameManager: {fileID: 1704349064}
+  _audioManager: {fileID: 1732755245}
 --- !u!70 &1062544055
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -2561,6 +2598,10 @@ PrefabInstance:
       propertyPath: itemType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 943551553089503274, guid: 4cdbd539ecc62a84d9002552e0735fd3, type: 3}
+      propertyPath: _audioManager
+      value: 
+      objectReference: {fileID: 1732755245}
     - target: {fileID: 2146606076959064757, guid: 4cdbd539ecc62a84d9002552e0735fd3, type: 3}
       propertyPath: m_Name
       value: Item_SpeedUp (2)
@@ -3357,6 +3398,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _miniGameManager: {fileID: 1704349064}
   _bossManager: {fileID: 1828961278}
+  _audioManager: {fileID: 1732755245}
   _pcObject: {fileID: 1062544051}
   _pcSpriteRenderer: {fileID: 231227578}
   _pcController: {fileID: 1062544054}
@@ -3429,10 +3471,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bgmAudioSource: {fileID: 965348691}
-  _bossBGM: {fileID: 0}
+  _bossBGM: {fileID: 8300000, guid: d7ed9b66d1ee7de47abb28f437ae5da6, type: 3}
   _seAudioSource: {fileID: 1784052651}
   _getItemSoundClip: {fileID: 8300000, guid: 0a02b61f72bd2034da4b3c131ef74cc9, type: 3}
   _hitSoundClip: {fileID: 8300000, guid: 1700561506b3d2147a8d3f21c8dcf59d, type: 3}
+  _jumpSE: {fileID: 8300000, guid: 40765ab06b762aa4dbf45009193905cb, type: 3}
 --- !u!1 &1784052650
 GameObject:
   m_ObjectHideFlags: 0
@@ -3677,6 +3720,7 @@ MonoBehaviour:
   _bossSprite: {fileID: 121728357}
   _miniGameManager: {fileID: 1704349064}
   _bossCamera: {fileID: 1635514973}
+  _audioManager: {fileID: 1732755245}
   _bossHealth:
     value: 3
   _koMoveLevel:
@@ -3967,6 +4011,10 @@ PrefabInstance:
       propertyPath: itemType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 943551553089503274, guid: 4cdbd539ecc62a84d9002552e0735fd3, type: 3}
+      propertyPath: _audioManager
+      value: 
+      objectReference: {fileID: 1732755245}
     - target: {fileID: 2146606076959064757, guid: 4cdbd539ecc62a84d9002552e0735fd3, type: 3}
       propertyPath: m_Name
       value: Item_SpeedUp (2)
@@ -4048,6 +4096,10 @@ PrefabInstance:
       propertyPath: itemType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 943551553089503274, guid: 4cdbd539ecc62a84d9002552e0735fd3, type: 3}
+      propertyPath: _audioManager
+      value: 
+      objectReference: {fileID: 1732755245}
     - target: {fileID: 2146606076959064757, guid: 4cdbd539ecc62a84d9002552e0735fd3, type: 3}
       propertyPath: m_Name
       value: Item_SpeedUp
