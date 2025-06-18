@@ -5408,7 +5408,7 @@ MonoBehaviour:
   jumpForce: 6
   maxHeight: 7
   rb2d: {fileID: 7267970059929151629}
-  audioSource: {fileID: 0}
+  audioManager: {fileID: 7956214756332574765}
 --- !u!1 &978732130
 GameObject:
   m_ObjectHideFlags: 0
@@ -8088,6 +8088,7 @@ GameObject:
   - component: {fileID: 101309541027819990}
   - component: {fileID: 945490487}
   - component: {fileID: 7956214756332574764}
+  - component: {fileID: 7956214756332574765}
   m_Layer: 0
   m_Name: Sheep01_0
   m_TagString: Sheep
@@ -9653,12 +9654,12 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 568ed1d7b0e23b640822eb5e2921a405, type: 3}
-  m_Resource: {fileID: 8300000, guid: 568ed1d7b0e23b640822eb5e2921a405, type: 3}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -9740,6 +9741,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7956214756332574765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2743591065370299134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b09e5b0c02748d4eb2f419890d47af6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 7956214756332574764}
+  bgmClip: {fileID: 8300000, guid: d7ed9b66d1ee7de47abb28f437ae5da6, type: 3}
+  jumpSound: {fileID: 8300000, guid: 40765ab06b762aa4dbf45009193905cb, type: 3}
+  gameOverSound: {fileID: 8300000, guid: 568ed1d7b0e23b640822eb5e2921a405, type: 3}
 --- !u!4 &8082534811170771418
 Transform:
   m_ObjectHideFlags: 0
