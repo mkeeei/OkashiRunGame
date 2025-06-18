@@ -83,6 +83,9 @@ public class MiniGame02Item : MonoBehaviour
         // プレイヤーがアイテムを取得した場合。
         if (collision.CompareTag("Player"))
         {
+            // アイテム取得音を再生。
+            _audioManager.PlayGetItemSound();
+
             // アイテムの取得処理を実行。
             GetItem();
 

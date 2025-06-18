@@ -35,8 +35,7 @@ public class MiniGame02_PlayerController : MonoBehaviour
     [SerializeField] private TransitionManager _transitionManager;
     [Tooltip("ミニゲームを管理するMiniGame02Manager")]
     [SerializeField] private MiniGame02Manager _miniGameManager;
-    [Tooltip("SEを管理する_audioManager")]
-    [SerializeField] private MiniGame02AudioManager _audioManager;
+    [SerializeField] private MiniGame02AudioManager _audioManager; // オーディオマネージャーの参照
 
     private ReactiveProperty<Vector2> _moveInput = new();
 
