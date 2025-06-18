@@ -49,6 +49,13 @@ public class MiniGame02Manager : MonoBehaviour
         {
             // ボスのHPが変動するたびに、アイテムの配置を更新する。
             UpdateItemPlacement();
+
+            // ボスのHPが0以下の時、MiniGame02Demo.BossDefeatDemoを呼び出す。
+            if (health <= 0)
+            {
+                // ボスが倒された時のデモを開始する。
+                _demo.DemoBossDefeated().Forget();
+            }
         });
 
         // デモ演出の開始。

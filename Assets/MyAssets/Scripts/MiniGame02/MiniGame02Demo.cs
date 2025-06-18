@@ -1,25 +1,35 @@
 // ミニゲームシーン02のデモを管理するスクリプト。
 
 using System;
-using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MiniGame02Demo : MonoBehaviour
 {
+    // ミニゲーム関連
+    [Header("ミニゲーム管理")]
     [SerializeField] MiniGame02Manager _miniGameManager; // ミニゲームの管理を行うスクリプト。
+    [SerializeField] MiniGame02BossManager _bossManager; // ボスエネミーの管理を行うスクリプト。
+
+    // プレイヤー関連
+    [Header("プレイヤー設定")]
     [SerializeField] GameObject _pcObject; // プレイヤーキャラクターのオブジェクト。
     [SerializeField] SpriteRenderer _pcSpriteRenderer; // プレイヤーキャラクターのスプライトレンダラー。
-    [SerializeField] MiniGame02BossManager _bossManager; // ボスエネミーの管理を行うスクリプト。
-    [SerializeField] GameObject _blackLine; // 黒線のオブジェクト。
     [SerializeField] MiniGame02_PlayerController _pcController; // プレイヤーコントローラーのスクリプト。
-    [SerializeField] TransitionManager _transitionManager; // 画面遷移の管理を行うスクリプト。
 
+    // UIや遷移関連
+    [Header("画面遷移管理")]
+    [SerializeField] TransitionManager _transitionManager; // 画面遷移の管理を行うスクリプト。
+    [SerializeField] GameObject _blackLine; // 黒線のオブジェクト。
+
+    // デモ設定
     [Header("デモの設定")]
     [SerializeField] Transform _bamiPCStart; // PCがスタートする位置。
     [SerializeField] Transform _bamiBossStart; // ボスがスタートする位置。
     [SerializeField] Transform _bamiPCButtobi; // PCが吹き飛ぶ位置。
+    [SerializeField] Transform _bamiPCAfterDefeeted; // PCが倒した位置。
 
 
     // デモの初期化メソッド。
@@ -60,7 +70,7 @@ public class MiniGame02Demo : MonoBehaviour
 
         // PCは回転しながら吹き飛ばされる。
         // 回転タスクをUniTaskに変換
-        var rotateTask = _pcObject.transform.DORotate(new Vector3(0f, 1080f, 0f), 0.3f)
+        var rotateTask = _pcObject.transform.DORotate(new Vector3(0f, 0f, 1080f), 0.3f)
                           .AsyncWaitForCompletion().AsUniTask();
 
         // 移動タスクをUniTaskに変換
@@ -70,8 +80,6 @@ public class MiniGame02Demo : MonoBehaviour
 
         // 両方のUniTaskを同時実行
         await UniTask.WhenAll(rotateTask, moveTask);
-
-
 
         // PCは初期位置へ移動。
         _miniGameManager.ResetPlayerPosition();
@@ -97,4 +105,38 @@ public class MiniGame02Demo : MonoBehaviour
         _miniGameManager.Initialize(); // ミニゲームの初期化を行う。
     }
 
+    // ボスが倒されたときのデモ処理。
+    public async UniTask DemoBossDefeated()
+    {
+        // Sequenceを作成
+        var _sequence = DOTween.Sequence();
+
+        // ボスを左に移動させる。
+        await _sequence.Append(_bossManager.transform.DOLocalMoveX(-40f, 0.3f)
+            .SetEase(Ease.Linear))
+
+        // 同時にPCは跳ね返り、回転しながら上へ。
+        .Join(
+            _pcObject.transform.DOLocalRotate(new Vector3(0f, 0f, 720f), 0.8f, RotateMode.FastBeyond360) // 回転。
+            )
+
+        .Join(
+               (_pcObject.transform.DOMoveX(_bamiPCAfterDefeeted.position.x, 0.8f) // 右方向へ移動。
+                .SetEase(Ease.Linear))
+            )
+
+        .Join(
+            _pcObject.transform.DOMoveY(1f, 0.4f)
+            .SetEase(Ease.OutCubic) // 上方向へ移動。
+            )
+
+        .Append(
+            _pcObject.transform.DOMoveY(_bamiPCAfterDefeeted.position.y, 0.4f)
+            .SetEase(Ease.InCubic)
+            )
+        .AsyncWaitForCompletion();
+
+        // PCを主点にしてトランジションでエンド。
+        await _transitionManager.SheepMaskOut();
+    }
 }
