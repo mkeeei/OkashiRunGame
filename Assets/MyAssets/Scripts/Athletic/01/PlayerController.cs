@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("コンポーネント")]
     [SerializeField] private Rigidbody2D rb2d;
+    [SerializeField] private AudioSource audioSource; // AudioSource を追加
 
     private bool isJumping = false;
 
@@ -24,8 +25,9 @@ public class PlayerController : MonoBehaviour
         Run();
         Jump();
 
-        if (transform.position.y <= -20f)
+        if (transform.position.y <= -10f)
         {
+            PlayGameOverSound(); // ゲームオーバー音を再生
             Destroy(gameObject);
             RestartGame(); // ゲームをリスタートするメソッドを呼び出し
 
@@ -72,5 +74,12 @@ public class PlayerController : MonoBehaviour
     {
         // 現在のシーンを再読み込み
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    private void PlayGameOverSound()
+    {
+        if (audioSource != null && !audioSource.isPlaying)
+        {
+            audioSource.Play(); // ゲームオーバー音を再生
+        }
     }
 }

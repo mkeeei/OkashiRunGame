@@ -1,0 +1,12 @@
+@startuml
+class LayerNameCreator <<static>> {
+    - <<const>> ITEM_NAME : string = "Tools/Create Constant/Layer Name"
+    - <<const>> PATH : string = "Assets/MyAssets/Scripts/Constants/LayerName.cs"
+    - {static} <<readonly>> FILENAME : string
+    - {static} <<readonly>> FILENAME_WITHOUT_EXTENSION : string
+    + {static} Create() : void
+    + {static} CreateScript() : void
+    + {static} CanCreate() : bool
+    + {static} RemoveInvalidChars(str:string) : string
+}
+@enduml

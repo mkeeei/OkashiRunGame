@@ -1,0 +1,8 @@
+@startuml
+class MiniGame02_GroundCheck {
+    - OnTriggerExit2D(collision:Collider2D) : void
+    - OnTriggerEnter2D(collision:Collider2D) : void
+}
+MonoBehaviour <|-- MiniGame02_GroundCheck
+MiniGame02_GroundCheck --> "_playerController" MiniGame02_PlayerController
+@enduml

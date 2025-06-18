@@ -1,0 +1,485 @@
+@startuml
+class BuildApp <<static>> {
+    + {static} Build() : void
+}
+class LayerNameCreator <<static>> {
+    - <<const>> ITEM_NAME : string = "Tools/Create Constant/Layer Name"
+    - <<const>> PATH : string = "Assets/MyAssets/Scripts/Constants/LayerName.cs"
+    - {static} <<readonly>> FILENAME : string
+    - {static} <<readonly>> FILENAME_WITHOUT_EXTENSION : string
+    + {static} Create() : void
+    + {static} CreateScript() : void
+    + {static} CanCreate() : bool
+    + {static} RemoveInvalidChars(str:string) : string
+}
+class SceneNameCreator <<static>> {
+    - <<const>> ITEM_NAME : string = "Tools/Create Constant/Scene Name"
+    - <<const>> PATH : string = "Assets/MyAssets/Scripts/Constants/SceneName.cs"
+    - {static} <<readonly>> FILENAME : string
+    - {static} <<readonly>> FILENAME_WITHOUT_EXTENSION : string
+    + {static} Create() : void
+    + {static} CreateScript() : void
+    + {static} CanCreate() : bool
+    + {static} RemoveInvalidChars(str:string) : string
+}
+class TagNameCreator <<static>> {
+    - <<const>> ITEM_NAME : string = "Tools/Create Constant/Tag Name"
+    - <<const>> PATH : string = "Assets/MyAssets/Scripts/Constants/TagName.cs"
+    - {static} <<readonly>> FILENAME : string
+    - {static} <<readonly>> FILENAME_WITHOUT_EXTENSION : string
+    + {static} Create() : void
+    + {static} CreateScript() : void
+    + {static} CanCreate() : bool
+    + {static} RemoveInvalidChars(str:string) : string
+}
+class DOTweenAnimation {
+}
+class OkashiMovement {
+    - Start() : void
+    - OnCollisionEnter2D(other:Collision2D) : void
+}
+MonoBehaviour <|-- OkashiMovement
+OkashiMovement --> "rb" Rigidbody2D
+class ScrollObject {
+    - speed : float = 1.0f
+    - startPosition : float
+    - endPosition : float
+    - Update() : void
+    - ScrollEnd() : void
+}
+MonoBehaviour <|-- ScrollObject
+class GameManager {
+    - isGameOver : bool = false
+    - timer : float = 0
+    - Start() : void
+    - LateUpdate() : void
+    - GameOver() : void
+    + IsGameOver() : bool
+    - Reload() : void
+    - <<async>> SceneChange() : UniTaskVoid
+}
+enum State {
+    Play,
+    GameOver,
+    GameClear,
+    Ready,
+}
+MonoBehaviour <|-- GameManager
+GameManager --> "state" State
+GameManager --> "sheepControllerPrefab" MiniGamePlayerController
+GameManager --> "animator" Animator
+GameManager --> "stateText" TextMeshProUGUI
+GameManager --> "transition" TransitionManager
+GameManager --> "sheepController" MiniGamePlayerController
+GameManager +-- State
+class MiniGame01Director {
+    + duration : float = 30f
+    - elapsedTime : float = 0f
+    - Start() : void
+    - Update() : void
+}
+MonoBehaviour <|-- MiniGame01Director
+MiniGame01Director --> "timeGarge" GameObject
+class MiniGamePlayerController {
+    + JUMP_FORCE : float = 8.0f
+    + WALK_FORCE : float = 30.0f
+    + MAX_WALK_SPEED : float = 3.0f
+    - isSafe : bool = false
+    - isDead : bool = false
+    - isJumping : bool = false
+    + IsDead : bool <<get>>
+    - Start() : void
+    - Update() : void
+    - OnTriggerEnter2D(other:Collider2D) : void
+    - OnTriggerExit2D(other:Collider2D) : void
+    - Walk() : void
+    - Jump() : void
+    - OnCollisionEnter2D(collision:Collision2D) : void
+}
+MonoBehaviour <|-- MiniGamePlayerController
+MiniGamePlayerController --> "rigid2D" Rigidbody2D
+class SyugersController {
+    - key : int = 1
+    + walkForce : float = 30.0f
+    + maxWalkSpeed : float = 5.0f
+    - Start() : void
+    - Update() : void
+    - OnCollisionEnter2D(collision:Collision2D) : void
+}
+MonoBehaviour <|-- SyugersController
+SyugersController --> "rigid2D" Rigidbody2D
+class SyugersManager {
+    - timer : float = 0f
+    - count : int = 0
+    - Start() : void
+    - Update() : void
+}
+MonoBehaviour <|-- SyugersManager
+SyugersManager --> "gumiAkaPrefab" GameObject
+SyugersManager --> "gumiBluePrefab" GameObject
+SyugersManager --> "gumiGreenPrefab" GameObject
+class WolfEyeController {
+    - timer : float
+    - Start() : void
+    - Update() : void
+}
+MonoBehaviour <|-- WolfEyeController
+class WolfEyesGenerator {
+    - delta : float = 0f
+    - timer : float = 0f
+    - count : int = 0
+    - Update() : void
+    + Create() : void
+}
+MonoBehaviour <|-- WolfEyesGenerator
+WolfEyesGenerator --> "wolfEyeRightPrefab" GameObject
+WolfEyesGenerator --> "wolfEyeLeftPrefab" GameObject
+WolfEyesGenerator --> "gameManager" GameManager
+class MinGame02ItemSpriteSelector {
+    - Start() : void
+    + SetItemSprite(index:int) : void
+}
+MonoBehaviour <|-- MinGame02ItemSpriteSelector
+MinGame02ItemSpriteSelector --> "_spriteRenderer" SpriteRenderer
+class MiniGame02BackgroundManager {
+}
+MonoBehaviour <|-- MiniGame02BackgroundManager
+MiniGame02BackgroundManager --> "_bg" Image
+class MiniGame02BossManager {
+    - Start() : void
+    + BossInitialize() : void
+    + <<async>> OnBossHit() : UniTask
+    - OnCollisionEnter2D(collision:Collision2D) : void
+}
+class "SerializableReactiveProperty`1"<T> {
+}
+MonoBehaviour <|-- MiniGame02BossManager
+MiniGame02BossManager --> "_player" MiniGame02_PlayerController
+MiniGame02BossManager --> "_bossSprite" SpriteRenderer
+MiniGame02BossManager --> "_miniGameManager" MiniGame02Manager
+MiniGame02BossManager --> "_bossCamera" CinemachineCamera
+MiniGame02BossManager o-> "_bossHealth<int>" "SerializableReactiveProperty`1"
+MiniGame02BossManager o-> "_koMoveLevel<float>" "SerializableReactiveProperty`1"
+class MiniGame02Demo {
+    + <<async>> DemoInitialize() : UniTask
+    + <<async>> DemoStart() : UniTask
+}
+MonoBehaviour <|-- MiniGame02Demo
+MiniGame02Demo --> "_miniGameManager" MiniGame02Manager
+MiniGame02Demo --> "_pcObject" GameObject
+MiniGame02Demo --> "_pcSpriteRenderer" SpriteRenderer
+MiniGame02Demo --> "_bossManager" MiniGame02BossManager
+MiniGame02Demo --> "_blackLine" GameObject
+MiniGame02Demo --> "_pcController" MiniGame02_PlayerController
+MiniGame02Demo --> "_transitionManager" TransitionManager
+MiniGame02Demo --> "_bamiPCStart" Transform
+MiniGame02Demo --> "_bamiBossStart" Transform
+MiniGame02Demo --> "_bamiPCButtobi" Transform
+class MiniGame02Item {
+    - Start() : void
+    + GetItem() : void
+    + ToggleGetItem(isGet:bool) : void
+    + DestroyItem() : void
+    + RespawnItem() : void
+    - OnTriggerEnter2D(collision:Collider2D) : void
+}
+class "SerializableReactiveProperty`1"<T> {
+}
+enum ItemType {
+    Heart,
+    SpeedUp,
+}
+MonoBehaviour <|-- MiniGame02Item
+MiniGame02Item o-> "itemType" ItemType
+MiniGame02Item --> "_player" MiniGame02_PlayerController
+MiniGame02Item o-> "_isGetItem<bool>" "SerializableReactiveProperty`1"
+MiniGame02Item --> "_itemSprite" SpriteRenderer
+MiniGame02Item +-- ItemType
+class MiniGame02Manager {
+    - Start() : void
+    + Initialize() : void
+    + ResetItemStatus() : void
+    + ResetPlayerPosition() : void
+    + SetFollowTarget(target:Transform) : void
+    + KnockBackPlayer() : void
+    + UpdateItemPlacement() : void
+}
+MonoBehaviour <|-- MiniGame02Manager
+MiniGame02Manager --> "_cinemaCamera" CinemachineCamera
+MiniGame02Manager --> "_playerTransform" Transform
+MiniGame02Manager --> "_StartPoint" Transform
+MiniGame02Manager --> "_playerButtobiPoint" Transform
+MiniGame02Manager --> "_pcController" MiniGame02_PlayerController
+MiniGame02Manager --> "_bossManager" MiniGame02BossManager
+MiniGame02Manager --> "_demo" MiniGame02Demo
+class MiniGame02_GroundCheck {
+    - OnTriggerExit2D(collision:Collider2D) : void
+    - OnTriggerEnter2D(collision:Collider2D) : void
+}
+MonoBehaviour <|-- MiniGame02_GroundCheck
+MiniGame02_GroundCheck --> "_playerController" MiniGame02_PlayerController
+class MiniGame02_PlayerController {
+    - <<const>> MOVE_SPEED : float = 5f
+    - <<const>> JUMP_FORCE : float = 10f
+    + _moveLevel : float = 1f
+    - Start() : void
+    + PlayerInitialize() : void
+    + ToggleCanMove(canMove:bool) : void
+    + AddMoveLevel(level:float) : void
+    + ResetMoveLevel() : void
+    + SetVelocity() : void
+    - OnMoveInputChanged(move:Vector2) : void
+    + <<async>> PCKnockOut() : UniTask
+    + MoveInput(context:InputAction.CallbackContext) : void
+    + JumpInput(context:InputAction.CallbackContext) : void
+}
+class "SerializableReactiveProperty`1"<T> {
+}
+class "ReactiveProperty`1"<T> {
+}
+MonoBehaviour <|-- MiniGame02_PlayerController
+MiniGame02_PlayerController o-> "_canMove<bool>" "SerializableReactiveProperty`1"
+MiniGame02_PlayerController o-> "_isJumping<bool>" "SerializableReactiveProperty`1"
+MiniGame02_PlayerController --> "_pcSpriteRenderer" SpriteRenderer
+MiniGame02_PlayerController --> "_rb" Rigidbody2D
+MiniGame02_PlayerController --> "_transitionManager" TransitionManager
+MiniGame02_PlayerController --> "_miniGameManager" MiniGame02Manager
+MiniGame02_PlayerController o-> "_moveInput<Vector2>" "ReactiveProperty`1"
+class LogoHover {
+    + speed : float = 3f
+    + range : float = 0.15f
+    - startY : float
+    - Start() : void
+    - Update() : void
+}
+MonoBehaviour <|-- LogoHover
+class QuitController {
+    - Start() : void
+    - SetEvent() : void
+    + EndGame() : void
+}
+MonoBehaviour <|-- QuitController
+QuitController --> "quitButton" Button
+class StartController {
+    - Start() : void
+    - SetEvent() : void
+    + StartGame() : void
+    <<async>> - WaitAnim() : UniTask
+}
+MonoBehaviour <|-- StartController
+StartController --> "startButton" Button
+StartController --> "transitionManager" TransitionManager
+class TransitionManager {
+    - _duration : float = 0.5f
+    + <<async>> SheepMaskOut() : UniTask
+    + <<async>> SheepMaskIn() : UniTask
+}
+MonoBehaviour <|-- TransitionManager
+TransitionManager --> "_blackScreen" SpriteRenderer
+TransitionManager --> "_sheepSpriteMask" SpriteMask
+TransitionManager o-> "_originalScaleSheep" Vector3
+class DeadZoneController {
+    + distance : float = 2.5f
+    + speed : float = 3.0f
+    - Update() : void
+    - OnTriggerEnter2D(other:Collider2D) : void
+}
+MonoBehaviour <|-- DeadZoneController
+DeadZoneController --> "player" Transform
+class MovigStageController {
+    + speed : float = 1.0f
+    + range : float = 1.0f
+    - startY : float
+    - Start() : void
+    - Update() : void
+}
+MonoBehaviour <|-- MovigStageController
+class PlayerController {
+    + runSpeed : float = 4f
+    + stopForce : float = 4f
+    + jumpForce : float = 5f
+    + maxHeight : float = 7f
+    - isJumping : bool = false
+    - Update() : void
+    - Run() : void
+    - Jump() : void
+    - OnCollisionEnter2D(collision:Collision2D) : void
+    - RestartGame() : void
+    - PlayGameOverSound() : void
+}
+MonoBehaviour <|-- PlayerController
+PlayerController --> "rb2d" Rigidbody2D
+PlayerController --> "audioSource" AudioSource
+class SceneChanger {
+    - sceneName : string = "MiniGameScene01"
+    - OnTriggerEnter2D(other:Collider2D) : void
+    <<async>> - WaitAnim() : UniTask
+}
+MonoBehaviour <|-- SceneChanger
+SceneChanger --> "transitionManager" TransitionManager
+class WolfChaseController {
+    + distance : float = 5f
+    + speed : float = 3.5f
+    - Update() : void
+    - OnCollisionEnter2D(collision:Collision2D) : void
+    - DestroySweetsAfterDelay(sweets:GameObject) : IEnumerator
+}
+MonoBehaviour <|-- WolfChaseController
+WolfChaseController --> "player" Transform
+WolfChaseController --> "sweets" GameObject
+class Athletic02Manager {
+    - wolfStartOffsetX : float
+    - wolfEndOffsetX : float = 1f
+    - wolfEntranceDuration : float = 1.5f
+    - Start() : void
+    - Update() : void
+    + SetState(newState:GameState) : void
+    - SetPlayerEnabled(enabled:bool) : void
+    + OnPlayerDead() : void
+    + OnPlayerClear() : void
+    - <<async>> WolfSequence() : UniTaskVoid
+    - ReloadScene() : void
+    - <<async>> WolfEntrance() : UniTask
+}
+enum GameState {
+    Ready,
+    Play,
+    GameOver,
+    Clear,
+}
+MonoBehaviour <|-- Athletic02Manager
+Athletic02Manager --> "State" GameState
+Athletic02Manager --> "readyText" TextMeshProUGUI
+Athletic02Manager --> "gameOverText" TextMeshProUGUI
+Athletic02Manager --> "lifeText" TextMeshProUGUI
+Athletic02Manager --> "distanceText" TextMeshProUGUI
+Athletic02Manager --> "scrollGround" ScrollGround
+Athletic02Manager --> "pockySpawner" PockySpawner
+Athletic02Manager --> "playerFlappy" PlayerFlappy
+Athletic02Manager --> "playerTransform" Transform
+Athletic02Manager --> "goalTransform" Transform
+Athletic02Manager --> "wolfJumpAction" WolfJumpAction
+Athletic02Manager --> "wolfTransform" Transform
+Athletic02Manager +-- GameState
+class Explosion {
+    - explosionForce : float = 10f
+    - explosionRadius : float = 2f
+    - upliftModifier : float = 0.5f
+    - Awake() : void
+    - OnTriggerEnter2D(other:Collider2D) : void
+    - OnDrawGizmosSelected() : void
+}
+MonoBehaviour <|-- Explosion
+Explosion --> "triggerCollider" Collider2D
+class GoalTrigger {
+    - nextSceneName : string
+    - hasCleared : bool = false
+    - Awake() : void
+    - OnTriggerEnter2D(other:Collider2D) : void
+    - <<async>> DoTransition() : UniTaskVoid
+}
+MonoBehaviour <|-- GoalTrigger
+GoalTrigger --> "player" PlayerFlappy
+GoalTrigger --> "transition" TransitionManager
+class PlayerFlappy {
+    - moveSpeed : float = 5f
+    - flapForce : float = 5f
+    - maxFallSpeed : float
+    - maxLives : int = 3
+    - invincibleDuration : float = 1f
+    - blinkInterval : float = 0.1f
+    - fallRotationSpeed : float = 360f
+    - minX : float
+    - maxX : float = 8f
+    - minY : float
+    - maxY : float = 4f
+    - currentLives : int
+    - invincibleTimer : float
+    - isAlive : bool = true
+    - doFlap : bool
+    - defaultGravity : float
+    - Awake() : void
+    - Start() : void
+    - Update() : void
+    - FixedUpdate() : void
+    - LateUpdate() : void
+    + TriggerFlap() : void
+    + SetControlActive(active:bool) : void
+    - OnCollisionEnter2D(collision:Collision2D) : void
+    - UpdateLifeUI() : void
+    - <<async>> BlinkDuringInvincible() : UniTaskVoid
+    - <<async>> DelayedGameOverAsync() : UniTaskVoid
+    - OnDrawGizmosSelected() : void
+}
+MonoBehaviour <|-- PlayerFlappy
+PlayerFlappy --> "lifeText" TextMeshProUGUI
+PlayerFlappy --> "rb" Rigidbody2D
+PlayerFlappy --> "spriteRend" SpriteRenderer
+class PockyMovement {
+    - moveSpeed : float = 5f
+    - hasTouched : bool = false
+    - Awake() : void
+    - Start() : void
+    - OnCollisionEnter2D(collision:Collision2D) : void
+    - EnableGravity() : void
+    - OnTriggerEnter2D(other:Collider2D) : void
+}
+MonoBehaviour <|-- PockyMovement
+PockyMovement --> "rb" Rigidbody2D
+class PockySpawner {
+    - startDelay : float = 15f
+    - intervalMin : float = 2f
+    - intervalMax : float = 4f
+    - spawnX : float = 10f
+    - spawnYMin : float
+    - spawnYMax : float = 3f
+    - warningBlinkInterval : float = 0.2f
+    - warningDuration : float = 1f
+    - warningOffsetX : float
+    - isSpawning : bool = false
+    + SetActiveSpawner(active:bool) : void
+    - <<async>> SpawnLoop() : UniTaskVoid
+    - <<async>> ShowWarningAtWorldY(worldY:float) : UniTask
+    - OnDrawGizmosSelected() : void
+}
+MonoBehaviour <|-- PockySpawner
+PockySpawner --> "enemyPrefab" GameObject
+PockySpawner --> "uiCanvas" Canvas
+PockySpawner --> "warningPrefab" TextMeshProUGUI
+class Rigidbody2DExtensions <<static>> {
+    + {static} AddExplosionForce(rb:Rigidbody2D, explosionForce:float, explosionPosition:Vector2, explosionRadius:float, upliftModifier:float) : void
+}
+class ScrollGround {
+    - speed : float = 5.0f
+    - endPosition : float
+    - isScrolling : bool = false
+    - Start() : void
+    - Update() : void
+    + StartScroll() : void
+    + StopScroll() : void
+}
+MonoBehaviour <|-- ScrollGround
+ScrollGround --> "blockTilemap" Tilemap
+ScrollGround --> "tileBounds" BoundsInt
+class WolfJumpAction {
+    - minInterval : float = 1f
+    - maxInterval : float = 3f
+    - jumpPower : float = 2f
+    - numJumps : int = 1
+    - jumpDuration : float = 0.6f
+    - shakeDuration : float = 0.5f
+    - shakeStrength : float = 0.3f
+    - shakeVibrato : int = 10
+    - spawnXMin : float
+    - spawnXMax : float = 5f
+    - spawnY : float = 6f
+    - Start() : void
+    + SetActiveJump(active:bool) : void
+    - <<async>> JumpLoop() : UniTask
+    - DoScreenShake() : void
+    - SpawnOkashi() : void
+    - OnDrawGizmosSelected() : void
+}
+MonoBehaviour <|-- WolfJumpAction
+WolfJumpAction --> "cameraTransform" Transform
+@enduml

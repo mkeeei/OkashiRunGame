@@ -1,0 +1,9 @@
+@startuml
+class SceneChanger {
+    - sceneName : string = "MiniGameScene01"
+    - OnTriggerEnter2D(other:Collider2D) : void
+    <<async>> - WaitAnim() : UniTask
+}
+MonoBehaviour <|-- SceneChanger
+SceneChanger --> "transitionManager" TransitionManager
+@enduml

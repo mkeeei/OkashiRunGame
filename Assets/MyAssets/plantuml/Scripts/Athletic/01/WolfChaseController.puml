@@ -1,0 +1,12 @@
+@startuml
+class WolfChaseController {
+    + distance : float = 5f
+    + speed : float = 3.5f
+    - Update() : void
+    - OnCollisionEnter2D(collision:Collision2D) : void
+    - DestroySweetsAfterDelay(sweets:GameObject) : IEnumerator
+}
+MonoBehaviour <|-- WolfChaseController
+WolfChaseController --> "player" Transform
+WolfChaseController --> "sweets" GameObject
+@enduml

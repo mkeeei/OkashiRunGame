@@ -1,0 +1,17 @@
+@startuml
+class MiniGame02Demo {
+    + <<async>> DemoInitialize() : UniTask
+    + <<async>> DemoStart() : UniTask
+}
+MonoBehaviour <|-- MiniGame02Demo
+MiniGame02Demo --> "_miniGameManager" MiniGame02Manager
+MiniGame02Demo --> "_pcObject" GameObject
+MiniGame02Demo --> "_pcSpriteRenderer" SpriteRenderer
+MiniGame02Demo --> "_bossManager" MiniGame02BossManager
+MiniGame02Demo --> "_blackLine" GameObject
+MiniGame02Demo --> "_pcController" MiniGame02_PlayerController
+MiniGame02Demo --> "_transitionManager" TransitionManager
+MiniGame02Demo --> "_bamiPCStart" Transform
+MiniGame02Demo --> "_bamiBossStart" Transform
+MiniGame02Demo --> "_bamiPCButtobi" Transform
+@enduml

@@ -1,0 +1,10 @@
+@startuml
+class LogoHover {
+    + speed : float = 3f
+    + range : float = 0.15f
+    - startY : float
+    - Start() : void
+    - Update() : void
+}
+MonoBehaviour <|-- LogoHover
+@enduml

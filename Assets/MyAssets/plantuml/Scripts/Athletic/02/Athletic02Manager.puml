@@ -1,0 +1,36 @@
+@startuml
+class Athletic02Manager {
+    - wolfStartOffsetX : float
+    - wolfEndOffsetX : float = 1f
+    - wolfEntranceDuration : float = 1.5f
+    - Start() : void
+    - Update() : void
+    + SetState(newState:GameState) : void
+    - SetPlayerEnabled(enabled:bool) : void
+    + OnPlayerDead() : void
+    + OnPlayerClear() : void
+    - <<async>> WolfSequence() : UniTaskVoid
+    - ReloadScene() : void
+    - <<async>> WolfEntrance() : UniTask
+}
+enum GameState {
+    Ready,
+    Play,
+    GameOver,
+    Clear,
+}
+MonoBehaviour <|-- Athletic02Manager
+Athletic02Manager --> "State" GameState
+Athletic02Manager --> "readyText" TextMeshProUGUI
+Athletic02Manager --> "gameOverText" TextMeshProUGUI
+Athletic02Manager --> "lifeText" TextMeshProUGUI
+Athletic02Manager --> "distanceText" TextMeshProUGUI
+Athletic02Manager --> "scrollGround" ScrollGround
+Athletic02Manager --> "pockySpawner" PockySpawner
+Athletic02Manager --> "playerFlappy" PlayerFlappy
+Athletic02Manager --> "playerTransform" Transform
+Athletic02Manager --> "goalTransform" Transform
+Athletic02Manager --> "wolfJumpAction" WolfJumpAction
+Athletic02Manager --> "wolfTransform" Transform
+Athletic02Manager +-- GameState
+@enduml

@@ -1,0 +1,10 @@
+@startuml
+class DeadZoneController {
+    + distance : float = 2.5f
+    + speed : float = 3.0f
+    - Update() : void
+    - OnTriggerEnter2D(other:Collider2D) : void
+}
+MonoBehaviour <|-- DeadZoneController
+DeadZoneController --> "player" Transform
+@enduml

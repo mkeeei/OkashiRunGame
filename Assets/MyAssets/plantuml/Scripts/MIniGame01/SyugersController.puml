@@ -1,0 +1,12 @@
+@startuml
+class SyugersController {
+    - key : int = 1
+    + walkForce : float = 30.0f
+    + maxWalkSpeed : float = 5.0f
+    - Start() : void
+    - Update() : void
+    - OnCollisionEnter2D(collision:Collision2D) : void
+}
+MonoBehaviour <|-- SyugersController
+SyugersController --> "rigid2D" Rigidbody2D
+@enduml

@@ -1,0 +1,22 @@
+@startuml
+class MiniGame02Item {
+    - Start() : void
+    + GetItem() : void
+    + ToggleGetItem(isGet:bool) : void
+    + DestroyItem() : void
+    + RespawnItem() : void
+    - OnTriggerEnter2D(collision:Collider2D) : void
+}
+class "SerializableReactiveProperty`1"<T> {
+}
+enum ItemType {
+    Heart,
+    SpeedUp,
+}
+MonoBehaviour <|-- MiniGame02Item
+MiniGame02Item o-> "itemType" ItemType
+MiniGame02Item --> "_player" MiniGame02_PlayerController
+MiniGame02Item o-> "_isGetItem<bool>" "SerializableReactiveProperty`1"
+MiniGame02Item --> "_itemSprite" SpriteRenderer
+MiniGame02Item +-- ItemType
+@enduml
