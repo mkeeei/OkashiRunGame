@@ -23,16 +23,21 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float timer = 0;
     [SerializeField] public TextMeshProUGUI stateText;
     [SerializeField] TransitionManager transition;
+    public AudioClip clearSE;
+    public AudioClip gameOverSE;
+    AudioSource audioSource;
 
     MiniGamePlayerController sheepController;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        SceneEnter();
         Time.timeScale = 1;
         sheepController = Instantiate(sheepControllerPrefab);
         sheepController.transform.position = new Vector3(-4, 8, 0);
         state = State.Ready;
+        this.audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -42,6 +47,7 @@ public class GameManager : MonoBehaviour
 
         if (timer >= 30.0f)
         {
+            this.audioSource.PlayOneShot(this.clearSE);
             stateText.text = "GO Run Way !! Push Enter";
             state = State.GameClear;
 
@@ -84,6 +90,7 @@ public class GameManager : MonoBehaviour
 
     private void GameOver()
     {
+        this.audioSource.PlayOneShot(this.gameOverSE);
         state = State.GameOver;
         isGameOver = true;
         animator.speed = 0;
@@ -105,6 +112,11 @@ public class GameManager : MonoBehaviour
     {
         await transition.SheepMaskOut();
         SceneManager.LoadScene("AthleticScene02");
+    }
+
+    private async UniTaskVoid SceneEnter()
+    {
+        await transition.SheepMaskIn();
     }
 
 

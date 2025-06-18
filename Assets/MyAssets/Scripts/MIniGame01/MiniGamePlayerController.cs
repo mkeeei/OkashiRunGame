@@ -12,6 +12,8 @@ public class MiniGamePlayerController : MonoBehaviour
     [SerializeField] private bool isSafe = false;
     [SerializeField] private bool isDead = false;
     [SerializeField] private bool isJumping = false;
+    public AudioClip jumpSE;
+    AudioSource audioSource;
 
     public bool IsDead
     {
@@ -26,6 +28,7 @@ public class MiniGamePlayerController : MonoBehaviour
     void Start()
     {
         Application.targetFrameRate = 60;
+        this.audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -115,6 +118,7 @@ public class MiniGamePlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && !isJumping)
         {
+            this.audioSource.PlayOneShot(this.jumpSE);
             Vector2 force = new Vector2(0, JUMP_FORCE);
             this.rigid2D.AddForce(force, ForceMode2D.Impulse);
 
