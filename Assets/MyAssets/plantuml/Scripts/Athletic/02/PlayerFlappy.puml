@@ -1,0 +1,36 @@
+@startuml
+class PlayerFlappy {
+    - moveSpeed : float = 5f
+    - flapForce : float = 5f
+    - maxFallSpeed : float
+    - maxLives : int = 3
+    - invincibleDuration : float = 1f
+    - blinkInterval : float = 0.1f
+    - fallRotationSpeed : float = 360f
+    - minX : float
+    - maxX : float = 8f
+    - minY : float
+    - maxY : float = 4f
+    - currentLives : int
+    - invincibleTimer : float
+    - isAlive : bool = true
+    - doFlap : bool
+    - defaultGravity : float
+    - Awake() : void
+    - Start() : void
+    - Update() : void
+    - FixedUpdate() : void
+    - LateUpdate() : void
+    + TriggerFlap() : void
+    + SetControlActive(active:bool) : void
+    - OnCollisionEnter2D(collision:Collision2D) : void
+    - UpdateLifeUI() : void
+    - <<async>> BlinkDuringInvincible() : UniTaskVoid
+    - <<async>> DelayedGameOverAsync() : UniTaskVoid
+    - OnDrawGizmosSelected() : void
+}
+MonoBehaviour <|-- PlayerFlappy
+PlayerFlappy --> "lifeText" TextMeshProUGUI
+PlayerFlappy --> "rb" Rigidbody2D
+PlayerFlappy --> "spriteRend" SpriteRenderer
+@enduml

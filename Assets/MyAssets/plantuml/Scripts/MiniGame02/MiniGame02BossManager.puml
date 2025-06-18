@@ -1,0 +1,17 @@
+@startuml
+class MiniGame02BossManager {
+    - Start() : void
+    + BossInitialize() : void
+    + <<async>> OnBossHit() : UniTask
+    - OnCollisionEnter2D(collision:Collision2D) : void
+}
+class "SerializableReactiveProperty`1"<T> {
+}
+MonoBehaviour <|-- MiniGame02BossManager
+MiniGame02BossManager --> "_player" MiniGame02_PlayerController
+MiniGame02BossManager --> "_bossSprite" SpriteRenderer
+MiniGame02BossManager --> "_miniGameManager" MiniGame02Manager
+MiniGame02BossManager --> "_bossCamera" CinemachineCamera
+MiniGame02BossManager o-> "_bossHealth<int>" "SerializableReactiveProperty`1"
+MiniGame02BossManager o-> "_koMoveLevel<float>" "SerializableReactiveProperty`1"
+@enduml

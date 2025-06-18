@@ -1,0 +1,13 @@
+@startuml
+class WolfEyesGenerator {
+    - delta : float = 0f
+    - timer : float = 0f
+    - count : int = 0
+    - Update() : void
+    + Create() : void
+}
+MonoBehaviour <|-- WolfEyesGenerator
+WolfEyesGenerator --> "wolfEyeRightPrefab" GameObject
+WolfEyesGenerator --> "wolfEyeLeftPrefab" GameObject
+WolfEyesGenerator --> "gameManager" GameManager
+@enduml

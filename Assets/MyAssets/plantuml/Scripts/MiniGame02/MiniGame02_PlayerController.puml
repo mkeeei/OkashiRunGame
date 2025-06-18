@@ -1,0 +1,29 @@
+@startuml
+class MiniGame02_PlayerController {
+    - <<const>> MOVE_SPEED : float = 5f
+    - <<const>> JUMP_FORCE : float = 10f
+    + _moveLevel : float = 1f
+    - Start() : void
+    + PlayerInitialize() : void
+    + ToggleCanMove(canMove:bool) : void
+    + AddMoveLevel(level:float) : void
+    + ResetMoveLevel() : void
+    + SetVelocity() : void
+    - OnMoveInputChanged(move:Vector2) : void
+    + <<async>> PCKnockOut() : UniTask
+    + MoveInput(context:InputAction.CallbackContext) : void
+    + JumpInput(context:InputAction.CallbackContext) : void
+}
+class "SerializableReactiveProperty`1"<T> {
+}
+class "ReactiveProperty`1"<T> {
+}
+MonoBehaviour <|-- MiniGame02_PlayerController
+MiniGame02_PlayerController o-> "_canMove<bool>" "SerializableReactiveProperty`1"
+MiniGame02_PlayerController o-> "_isJumping<bool>" "SerializableReactiveProperty`1"
+MiniGame02_PlayerController --> "_pcSpriteRenderer" SpriteRenderer
+MiniGame02_PlayerController --> "_rb" Rigidbody2D
+MiniGame02_PlayerController --> "_transitionManager" TransitionManager
+MiniGame02_PlayerController --> "_miniGameManager" MiniGame02Manager
+MiniGame02_PlayerController o-> "_moveInput<Vector2>" "ReactiveProperty`1"
+@enduml

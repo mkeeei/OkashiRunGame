@@ -1,0 +1,23 @@
+@startuml
+class WolfJumpAction {
+    - minInterval : float = 1f
+    - maxInterval : float = 3f
+    - jumpPower : float = 2f
+    - numJumps : int = 1
+    - jumpDuration : float = 0.6f
+    - shakeDuration : float = 0.5f
+    - shakeStrength : float = 0.3f
+    - shakeVibrato : int = 10
+    - spawnXMin : float
+    - spawnXMax : float = 5f
+    - spawnY : float = 6f
+    - Start() : void
+    + SetActiveJump(active:bool) : void
+    - <<async>> JumpLoop() : UniTask
+    - DoScreenShake() : void
+    - SpawnOkashi() : void
+    - OnDrawGizmosSelected() : void
+}
+MonoBehaviour <|-- WolfJumpAction
+WolfJumpAction --> "cameraTransform" Transform
+@enduml

@@ -1,0 +1,12 @@
+@startuml
+class GoalTrigger {
+    - nextSceneName : string
+    - hasCleared : bool = false
+    - Awake() : void
+    - OnTriggerEnter2D(other:Collider2D) : void
+    - <<async>> DoTransition() : UniTaskVoid
+}
+MonoBehaviour <|-- GoalTrigger
+GoalTrigger --> "player" PlayerFlappy
+GoalTrigger --> "transition" TransitionManager
+@enduml

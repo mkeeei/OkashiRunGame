@@ -1,0 +1,12 @@
+@startuml
+class Explosion {
+    - explosionForce : float = 10f
+    - explosionRadius : float = 2f
+    - upliftModifier : float = 0.5f
+    - Awake() : void
+    - OnTriggerEnter2D(other:Collider2D) : void
+    - OnDrawGizmosSelected() : void
+}
+MonoBehaviour <|-- Explosion
+Explosion --> "triggerCollider" Collider2D
+@enduml

@@ -1,0 +1,8 @@
+@startuml
+class OkashiMovement {
+    - Start() : void
+    - OnCollisionEnter2D(other:Collision2D) : void
+}
+MonoBehaviour <|-- OkashiMovement
+OkashiMovement --> "rb" Rigidbody2D
+@enduml

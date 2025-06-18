@@ -39,7 +39,7 @@ public class MiniGame02BossManager : MonoBehaviour
         _bossHealth.Value--;
 
         // ボスの体力が0以下になった場合、ボスを倒す。
-        if (_bossHealth.Value <= 0)
+        if (_bossHealth.Value == 0)
         {
             Debug.Log("Boss Defeated!");
             // ボスの消去処理を呼び出す。
@@ -56,7 +56,11 @@ public class MiniGame02BossManager : MonoBehaviour
                 // 点滅終了後に透明度を元に戻す。
                 _bossSprite.color = new Color(_bossSprite.color.r, _bossSprite.color.g, _bossSprite.color.b, 1f);
             });
-     
+
+        await transform.DOPunchPosition(new Vector3(0.2f, 0, 0), 0.4f, 20, 1f) // ボスが身震いする演出。
+            .AsyncWaitForCompletion();
+        await UniTask.Delay(TimeSpan.FromSeconds(0.4f)); // 少し待機。
+
         // カメラの優先度を下げて演出終了。
         _bossCamera.Priority = 0;
 

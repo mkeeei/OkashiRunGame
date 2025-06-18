@@ -1,0 +1,12 @@
+@startuml
+class SyugersManager {
+    - timer : float = 0f
+    - count : int = 0
+    - Start() : void
+    - Update() : void
+}
+MonoBehaviour <|-- SyugersManager
+SyugersManager --> "gumiAkaPrefab" GameObject
+SyugersManager --> "gumiBluePrefab" GameObject
+SyugersManager --> "gumiGreenPrefab" GameObject
+@enduml

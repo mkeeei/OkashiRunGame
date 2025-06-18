@@ -1,0 +1,11 @@
+@startuml
+class StartController {
+    - Start() : void
+    - SetEvent() : void
+    + StartGame() : void
+    <<async>> - WaitAnim() : UniTask
+}
+MonoBehaviour <|-- StartController
+StartController --> "startButton" Button
+StartController --> "transitionManager" TransitionManager
+@enduml

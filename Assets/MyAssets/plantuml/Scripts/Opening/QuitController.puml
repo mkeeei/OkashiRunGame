@@ -1,0 +1,9 @@
+@startuml
+class QuitController {
+    - Start() : void
+    - SetEvent() : void
+    + EndGame() : void
+}
+MonoBehaviour <|-- QuitController
+QuitController --> "quitButton" Button
+@enduml

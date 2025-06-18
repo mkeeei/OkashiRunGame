@@ -1,0 +1,22 @@
+@startuml
+class PockySpawner {
+    - startDelay : float = 15f
+    - intervalMin : float = 2f
+    - intervalMax : float = 4f
+    - spawnX : float = 10f
+    - spawnYMin : float
+    - spawnYMax : float = 3f
+    - warningBlinkInterval : float = 0.2f
+    - warningDuration : float = 1f
+    - warningOffsetX : float
+    - isSpawning : bool = false
+    + SetActiveSpawner(active:bool) : void
+    - <<async>> SpawnLoop() : UniTaskVoid
+    - <<async>> ShowWarningAtWorldY(worldY:float) : UniTask
+    - OnDrawGizmosSelected() : void
+}
+MonoBehaviour <|-- PockySpawner
+PockySpawner --> "enemyPrefab" GameObject
+PockySpawner --> "uiCanvas" Canvas
+PockySpawner --> "warningPrefab" TextMeshProUGUI
+@enduml

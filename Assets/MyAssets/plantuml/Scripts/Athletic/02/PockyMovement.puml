@@ -1,0 +1,13 @@
+@startuml
+class PockyMovement {
+    - moveSpeed : float = 5f
+    - hasTouched : bool = false
+    - Awake() : void
+    - Start() : void
+    - OnCollisionEnter2D(collision:Collision2D) : void
+    - EnableGravity() : void
+    - OnTriggerEnter2D(other:Collider2D) : void
+}
+MonoBehaviour <|-- PockyMovement
+PockyMovement --> "rb" Rigidbody2D
+@enduml

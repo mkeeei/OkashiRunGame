@@ -1,0 +1,8 @@
+@startuml
+class MinGame02ItemSpriteSelector {
+    - Start() : void
+    + SetItemSprite(index:int) : void
+}
+MonoBehaviour <|-- MinGame02ItemSpriteSelector
+MinGame02ItemSpriteSelector --> "_spriteRenderer" SpriteRenderer
+@enduml

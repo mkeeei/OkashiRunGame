@@ -1,0 +1,8 @@
+@startuml
+class WolfEyeController {
+    - timer : float
+    - Start() : void
+    - Update() : void
+}
+MonoBehaviour <|-- WolfEyeController
+@enduml
