@@ -35,6 +35,8 @@ public class MiniGame02_PlayerController : MonoBehaviour
     [SerializeField] private TransitionManager _transitionManager;
     [Tooltip("ミニゲームを管理するMiniGame02Manager")]
     [SerializeField] private MiniGame02Manager _miniGameManager;
+    [Tooltip("SEを管理する_audioManager")]
+    [SerializeField] private MiniGame02AudioManager _audioManager;
 
     private ReactiveProperty<Vector2> _moveInput = new();
 
@@ -128,6 +130,7 @@ public class MiniGame02_PlayerController : MonoBehaviour
         // ジャンプキー入力直後、かつ現在ジャンプ中でない場合にジャンプを実行する。
         if (context.started && !_isJumping.Value)
         {
+            _audioManager.PlayJumpSound(); // ジャンプ音を再生する。
             _rb.AddForce(Vector2.up * JUMP_FORCE, ForceMode2D.Impulse);
         }
     }
