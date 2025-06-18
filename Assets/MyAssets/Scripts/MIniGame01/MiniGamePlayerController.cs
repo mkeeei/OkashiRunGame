@@ -53,7 +53,6 @@ public class MiniGamePlayerController : MonoBehaviour
         if (other.CompareTag("Obstacles"))
         {
             isSafe = true;
-            Debug.Log("Obstacles In");
         }
 
         if (other.CompareTag("Wolf"))
@@ -72,7 +71,6 @@ public class MiniGamePlayerController : MonoBehaviour
         if (other.CompareTag("Obstacles"))
         {
             isSafe = false;
-            Debug.Log("Obstacles Out");
         }
 
     }
