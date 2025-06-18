@@ -14,6 +14,7 @@ public class SceneChanger : MonoBehaviour
         if (other.CompareTag("Sheep"))
         {
             WaitAnim().Forget();
+            Destroy(other.gameObject);
         }
     }
 

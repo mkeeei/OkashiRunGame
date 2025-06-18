@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
         Run();
         Jump();
 
-        if (transform.position.y <= -10f)
+        if (transform.position.y <= -15f)
         {
             audioManager.PlayGameOverSound(); // ゲームオーバー音を再生
             Destroy(gameObject);
