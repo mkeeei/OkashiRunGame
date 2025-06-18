@@ -1,0 +1,10 @@
+@startuml
+class MovigStageController {
+    + speed : float = 1.0f
+    + range : float = 1.0f
+    - startY : float
+    - Start() : void
+    - Update() : void
+}
+MonoBehaviour <|-- MovigStageController
+@enduml

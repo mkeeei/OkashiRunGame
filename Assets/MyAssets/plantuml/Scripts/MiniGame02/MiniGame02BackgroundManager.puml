@@ -1,0 +1,6 @@
+@startuml
+class MiniGame02BackgroundManager {
+}
+MonoBehaviour <|-- MiniGame02BackgroundManager
+MiniGame02BackgroundManager --> "_bg" Image
+@enduml

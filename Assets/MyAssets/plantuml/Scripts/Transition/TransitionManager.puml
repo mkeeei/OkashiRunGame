@@ -1,0 +1,11 @@
+@startuml
+class TransitionManager {
+    - _duration : float = 0.5f
+    + <<async>> SheepMaskOut() : UniTask
+    + <<async>> SheepMaskIn() : UniTask
+}
+MonoBehaviour <|-- TransitionManager
+TransitionManager --> "_blackScreen" SpriteRenderer
+TransitionManager --> "_sheepSpriteMask" SpriteMask
+TransitionManager o-> "_originalScaleSheep" Vector3
+@enduml

@@ -1,0 +1,5 @@
+@startuml
+class Rigidbody2DExtensions <<static>> {
+    + {static} AddExplosionForce(rb:Rigidbody2D, explosionForce:float, explosionPosition:Vector2, explosionRadius:float, upliftModifier:float) : void
+}
+@enduml

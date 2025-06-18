@@ -1,0 +1,10 @@
+@startuml
+class MiniGame01Director {
+    + duration : float = 30f
+    - elapsedTime : float = 0f
+    - Start() : void
+    - Update() : void
+}
+MonoBehaviour <|-- MiniGame01Director
+MiniGame01Director --> "timeGarge" GameObject
+@enduml

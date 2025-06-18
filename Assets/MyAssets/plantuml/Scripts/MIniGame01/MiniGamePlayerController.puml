@@ -1,0 +1,20 @@
+@startuml
+class MiniGamePlayerController {
+    + JUMP_FORCE : float = 8.0f
+    + WALK_FORCE : float = 30.0f
+    + MAX_WALK_SPEED : float = 3.0f
+    - isSafe : bool = false
+    - isDead : bool = false
+    - isJumping : bool = false
+    + IsDead : bool <<get>>
+    - Start() : void
+    - Update() : void
+    - OnTriggerEnter2D(other:Collider2D) : void
+    - OnTriggerExit2D(other:Collider2D) : void
+    - Walk() : void
+    - Jump() : void
+    - OnCollisionEnter2D(collision:Collision2D) : void
+}
+MonoBehaviour <|-- MiniGamePlayerController
+MiniGamePlayerController --> "rigid2D" Rigidbody2D
+@enduml

@@ -1,0 +1,19 @@
+@startuml
+class MiniGame02Manager {
+    - Start() : void
+    + Initialize() : void
+    + ResetItemStatus() : void
+    + ResetPlayerPosition() : void
+    + SetFollowTarget(target:Transform) : void
+    + KnockBackPlayer() : void
+    + UpdateItemPlacement() : void
+}
+MonoBehaviour <|-- MiniGame02Manager
+MiniGame02Manager --> "_cinemaCamera" CinemachineCamera
+MiniGame02Manager --> "_playerTransform" Transform
+MiniGame02Manager --> "_StartPoint" Transform
+MiniGame02Manager --> "_playerButtobiPoint" Transform
+MiniGame02Manager --> "_pcController" MiniGame02_PlayerController
+MiniGame02Manager --> "_bossManager" MiniGame02BossManager
+MiniGame02Manager --> "_demo" MiniGame02Demo
+@enduml

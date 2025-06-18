@@ -1,0 +1,26 @@
+@startuml
+class GameManager {
+    - isGameOver : bool = false
+    - timer : float = 0
+    - Start() : void
+    - LateUpdate() : void
+    - GameOver() : void
+    + IsGameOver() : bool
+    - Reload() : void
+    - <<async>> SceneChange() : UniTaskVoid
+}
+enum State {
+    Play,
+    GameOver,
+    GameClear,
+    Ready,
+}
+MonoBehaviour <|-- GameManager
+GameManager --> "state" State
+GameManager --> "sheepControllerPrefab" MiniGamePlayerController
+GameManager --> "animator" Animator
+GameManager --> "stateText" TextMeshProUGUI
+GameManager --> "transition" TransitionManager
+GameManager --> "sheepController" MiniGamePlayerController
+GameManager +-- State
+@enduml

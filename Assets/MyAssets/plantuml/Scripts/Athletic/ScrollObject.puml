@@ -1,0 +1,10 @@
+@startuml
+class ScrollObject {
+    - speed : float = 1.0f
+    - startPosition : float
+    - endPosition : float
+    - Update() : void
+    - ScrollEnd() : void
+}
+MonoBehaviour <|-- ScrollObject
+@enduml

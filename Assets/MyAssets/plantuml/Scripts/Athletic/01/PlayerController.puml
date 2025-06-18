@@ -1,0 +1,18 @@
+@startuml
+class PlayerController {
+    + runSpeed : float = 4f
+    + stopForce : float = 4f
+    + jumpForce : float = 5f
+    + maxHeight : float = 7f
+    - isJumping : bool = false
+    - Update() : void
+    - Run() : void
+    - Jump() : void
+    - OnCollisionEnter2D(collision:Collision2D) : void
+    - RestartGame() : void
+    - PlayGameOverSound() : void
+}
+MonoBehaviour <|-- PlayerController
+PlayerController --> "rb2d" Rigidbody2D
+PlayerController --> "audioSource" AudioSource
+@enduml

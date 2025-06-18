@@ -1,0 +1,14 @@
+@startuml
+class ScrollGround {
+    - speed : float = 5.0f
+    - endPosition : float
+    - isScrolling : bool = false
+    - Start() : void
+    - Update() : void
+    + StartScroll() : void
+    + StopScroll() : void
+}
+MonoBehaviour <|-- ScrollGround
+ScrollGround --> "blockTilemap" Tilemap
+ScrollGround --> "tileBounds" BoundsInt
+@enduml
