@@ -13,7 +13,8 @@ public static class BuildApp
                  "Assets/Scenes/MiniGameScene01.unity",
                 "Assets/Scenes/AthleticScene02.unity" ,
                  "Assets/Scenes/MiniGameScene02.unity" ,
-                "Assets/Scenes/GameOverScene.unity"
+                "Assets/Scenes/GameOverScene.unity",
+                "Assets/Scenes/Ending.unity"
 
             },
             "Builds/App/OkashiRunGame.exe",
