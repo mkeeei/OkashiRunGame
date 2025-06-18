@@ -7,7 +7,7 @@ public class GoalTrigger : MonoBehaviour
 {
     [Header("次にロードするシーン名")]
     [SerializeField] private string nextSceneName;
-    [SerializeField] PlayerFlappy player;
+
     [SerializeField] TransitionManager transition;
 
     private bool hasCleared = false;
@@ -32,11 +32,11 @@ public class GoalTrigger : MonoBehaviour
             mgr?.OnPlayerClear();
 
             // 2) 非同期でトランジション→シーン切り替え
-            DoTransition().Forget();
+            DoMaskOut().Forget();
         }
     }
 
-    private async UniTaskVoid DoTransition()
+    private async UniTaskVoid DoMaskOut()
     {
         await transition.SheepMaskOut();
 

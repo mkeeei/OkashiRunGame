@@ -152,6 +152,7 @@ MonoBehaviour:
   gameOverText: {fileID: 2007171958}
   lifeText: {fileID: 1207573994}
   distanceText: {fileID: 1298331525}
+  transition: {fileID: 389121832}
   scrollGround: {fileID: 241793467}
   pockySpawner: {fileID: 599632020}
   playerFlappy: {fileID: 7956214756334675454}
@@ -8187,7 +8188,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextSceneName: MiniGameScene02
-  player: {fileID: 0}
   transition: {fileID: 389121832}
 --- !u!1 &1149871639
 GameObject:
@@ -8503,9 +8503,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1869927098912042129, guid: 5385c16e754484846936f055f5dff2a4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1869927098912042129, guid: 5385c16e754484846936f055f5dff2a4, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2145764112590207077, guid: 5385c16e754484846936f055f5dff2a4, type: 3}
       propertyPath: m_Name
       value: Prefab_Transition
+      objectReference: {fileID: 0}
+    - target: {fileID: 3371039978221915297, guid: 5385c16e754484846936f055f5dff2a4, type: 3}
+      propertyPath: m_Color.a
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6549971394263912720, guid: 5385c16e754484846936f055f5dff2a4, type: 3}
       propertyPath: m_LocalPosition.x
