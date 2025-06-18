@@ -10,12 +10,17 @@ public class GoalTrigger : MonoBehaviour
 
     [SerializeField] TransitionManager transition;
 
+    [Header("âπåπ")]
+    public AudioClip Victory;
+    AudioSource audioSource;
+
     private bool hasCleared = false;
 
     private void Awake()
     {
         // ïKÇ∏ Is Trigger Ç…ÇµÇƒÇ®Ç≠
         var col = GetComponent<Collider2D>();
+        audioSource = GetComponent<AudioSource>();
         col.isTrigger = true;
     }
 
@@ -26,6 +31,7 @@ public class GoalTrigger : MonoBehaviour
         if (other.TryGetComponent<PlayerFlappy>(out _))
         {
             hasCleared = true;
+            audioSource.PlayOneShot(Victory);
 
             // 1) State Ç Clear Ç…êÿÇËë÷Ç¶
             var mgr = FindFirstObjectByType<Athletic02Manager>();

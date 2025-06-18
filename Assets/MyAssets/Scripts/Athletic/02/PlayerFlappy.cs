@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;  // UniTask を使う場合
+using Cysharp.Threading.Tasks;
 using System;
 using TMPro;
 using Unity.VisualScripting;
@@ -14,6 +14,7 @@ public class PlayerFlappy : MonoBehaviour
     public AudioClip down;
 
     AudioSource audioSource;
+    private bool hasPlayedDownSound = false;
 
     [Header("左右移動設定")]
     [SerializeField] private float moveSpeed = 5f;
@@ -153,7 +154,12 @@ public class PlayerFlappy : MonoBehaviour
 
             // ライフ０：ひっくり返って落下
             isAlive = false;
-            audioSource.PlayOneShot(down);
+            // 一度だけサウンドを鳴らす
+            if (!hasPlayedDownSound)
+            {
+                audioSource.PlayOneShot(down);
+                hasPlayedDownSound = true;
+            }
 
             // 速度リセット
             rb.linearVelocity = Vector2.zero;
