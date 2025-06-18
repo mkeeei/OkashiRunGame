@@ -29,7 +29,16 @@ public class PockySpawner : MonoBehaviour
     [SerializeField] private float warningDuration = 1f;
     [SerializeField] private float warningOffsetX = -50f; // 画面端から内側へのオフセット
 
+    [Header("音源")]
+    public AudioClip alert;
+    AudioSource audioSource;
+
     private bool isSpawning = false;
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     /// <summary>
     /// Athletic02Manager から Ready/Play/GameOver に応じて呼び出す
@@ -57,6 +66,7 @@ public class PockySpawner : MonoBehaviour
             float y = UnityEngine.Random.Range(spawnYMin, spawnYMax);
 
             // Warning 表示＆完了待ち
+            audioSource.PlayOneShot(alert);
             await ShowWarningAtWorldY(y);
 
             // 敵を生成
