@@ -5403,9 +5403,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92e3b7dd19dc47145befdd77e9cef251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runSpeed: 3
+  runSpeed: 4
   stopForce: 3
-  jumpForce: 6
+  jumpForce: 7
   maxHeight: 7
   rb2d: {fileID: 7267970059929151629}
   audioManager: {fileID: 7956214756332574765}

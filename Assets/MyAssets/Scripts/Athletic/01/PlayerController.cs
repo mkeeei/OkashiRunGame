@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     [Header("設定")]
     public float runSpeed = 4f;
     public float stopForce = 4f;
-    public float jumpForce = 5f;
+    public float jumpForce = 7f;
     public float maxHeight = 7f;
 
     [Header("コンポーネント")]
