@@ -5,6 +5,7 @@ using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MiniGame02Demo : MonoBehaviour
 {
@@ -145,5 +146,8 @@ public class MiniGame02Demo : MonoBehaviour
 
         // PCを主点にしてトランジションでエンド。
         await _transitionManager.SheepMaskOut();
+
+        // EDシーンに遷移。
+        SceneManager.LoadScene("Ending"); 
     }
 }
