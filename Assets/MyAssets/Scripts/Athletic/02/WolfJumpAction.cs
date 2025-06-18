@@ -1,7 +1,8 @@
+using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using System;
 using UnityEngine;
-using DG.Tweening;
-using Cysharp.Threading.Tasks;
+using UnityEngine.Audio;
 
 [RequireComponent(typeof(Collider2D))]
 public class WolfJumpAction : MonoBehaviour
@@ -29,11 +30,16 @@ public class WolfJumpAction : MonoBehaviour
     [Tooltip("お菓子の Y 座標固定値")]
     [SerializeField] private float spawnY = 6f;
 
+    [Header("音源")]
+    public AudioClip wolfJump;
+    AudioSource audioSource;
 
     private void Start()
     {
         if (cameraTransform == null && Camera.main != null)
             cameraTransform = Camera.main.transform;
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Manager から呼ばれる
@@ -61,6 +67,7 @@ public class WolfJumpAction : MonoBehaviour
                 .AsyncWaitForCompletion();
 
             // 着地時の演出
+            audioSource.PlayOneShot(wolfJump);
             DoScreenShake();
             SpawnOkashi();
         }

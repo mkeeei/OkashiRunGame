@@ -35,10 +35,15 @@ public class Athletic02Manager : MonoBehaviour
     [SerializeField] private float wolfEndOffsetX = 1f;// 左端からステージ内どこまで来るか
     [SerializeField] private float wolfEntranceDuration = 1.5f; // 秒    
 
+    [Header("音源")]
+    public AudioClip stageBGM;
+    AudioSource audioSource;
+    
     private void Start()
     {
         SetState(GameState.Ready);
         DoMaskIn().Forget();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
