@@ -1,12 +1,20 @@
+using Cysharp.Threading.Tasks;  // UniTask を使う場合
 using System;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using TMPro;
-using Cysharp.Threading.Tasks;  // UniTask を使う場合
 
 [RequireComponent(typeof(Rigidbody2D), typeof(SpriteRenderer))]
 public class PlayerFlappy : MonoBehaviour
 {
+    [Header("音源")]
+    public AudioClip jump;
+    public AudioClip damage;
+    public AudioClip down;
+
+    AudioSource audioSource;
+
     [Header("左右移動設定")]
     [SerializeField] private float moveSpeed = 5f;
 
@@ -44,6 +52,7 @@ public class PlayerFlappy : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         defaultGravity = rb.gravityScale; // 起動時の値を保存
         spriteRend = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -78,6 +87,7 @@ public class PlayerFlappy : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
             rb.AddForce(Vector2.up * flapForce, ForceMode2D.Impulse);
+            audioSource.PlayOneShot(jump);
             doFlap = false;
         }
 
@@ -123,8 +133,9 @@ public class PlayerFlappy : MonoBehaviour
         if (invincibleTimer > 0f) return;
 
         currentLives--;
+        audioSource.PlayOneShot(damage);
 
-        if(currentLives < 0)
+        if (currentLives < 0)
         {
             currentLives = 0;
         }
@@ -142,6 +153,7 @@ public class PlayerFlappy : MonoBehaviour
 
             // ライフ０：ひっくり返って落下
             isAlive = false;
+            audioSource.PlayOneShot(down);
 
             // 速度リセット
             rb.linearVelocity = Vector2.zero;
