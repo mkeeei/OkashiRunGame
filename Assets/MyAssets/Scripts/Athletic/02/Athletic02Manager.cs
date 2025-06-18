@@ -14,6 +14,7 @@ public class Athletic02Manager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI gameOverText;
     [SerializeField] private TextMeshProUGUI lifeText;
     [SerializeField] private TextMeshProUGUI distanceText;
+    [SerializeField] TransitionManager transition;
 
     [Header("Ground スクロール")]
     [SerializeField] private ScrollGround scrollGround;
@@ -37,6 +38,7 @@ public class Athletic02Manager : MonoBehaviour
     private void Start()
     {
         SetState(GameState.Ready);
+        DoMaskIn().Forget();
     }
 
     private void Update()
@@ -203,6 +205,11 @@ public class Athletic02Manager : MonoBehaviour
         }
         // 最終位置を保証
         wolfTransform.position = endPos;
+    }
+
+    private async UniTaskVoid DoMaskIn()
+    {
+        await transition.SheepMaskIn();
     }
 }
 
