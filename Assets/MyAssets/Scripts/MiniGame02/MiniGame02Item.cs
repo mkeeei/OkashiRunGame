@@ -9,6 +9,7 @@ public class MiniGame02Item : MonoBehaviour
     [SerializeField] MiniGame02_PlayerController _player; // プレイヤーの参照を設定する変数。
     [SerializeField] SerializableReactiveProperty<bool> _isGetItem = new(false); // アイテム取得状態を管理するReactiveProperty。
     [SerializeField] SpriteRenderer _itemSprite; // アイテムのスプライトレンダラーを設定する変数。
+    [SerializeField] MiniGame02AudioManager _audioManager; // オーディオマネージャーの参照を設定する変数。
 
     // アイテムの種類を定義する列挙型。
     public enum ItemType
@@ -41,6 +42,9 @@ public class MiniGame02Item : MonoBehaviour
         {
             return;
         }
+
+        // SEを再生する。
+        _audioManager.PlayGetItemSound();
 
         // アイテムの種類がSpeedUpの場合、プレイヤーの速度を上げる処理を実行。
         if (itemType == ItemType.SpeedUp)
@@ -79,6 +83,9 @@ public class MiniGame02Item : MonoBehaviour
         // プレイヤーがアイテムを取得した場合。
         if (collision.CompareTag("Player"))
         {
+            // アイテム取得音を再生。
+            _audioManager.PlayGetItemSound();
+
             // アイテムの取得処理を実行。
             GetItem();
 

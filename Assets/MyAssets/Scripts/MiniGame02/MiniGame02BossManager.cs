@@ -14,6 +14,7 @@ public class MiniGame02BossManager : MonoBehaviour
     [SerializeField] SpriteRenderer _bossSprite; // ボスのスプライトレンダラーを設定する変数。
     [SerializeField] MiniGame02Manager _miniGameManager; // ミニゲームマネージャーの参照を設定する変数。
     [SerializeField] CinemachineCamera _bossCamera; // ボスのカメラを設定する変数。
+    [SerializeField] MiniGame02AudioManager _audioManager; // オーディオマネージャーの参照を設定する変数。    
 
     [SerializeField] public SerializableReactiveProperty<int> _bossHealth = new(3); // ボスの体力を管理するReactiveProperty。
     [SerializeField] SerializableReactiveProperty<float> _koMoveLevel = new(3); // ボスにダメージを与えられる移動レベル。
@@ -75,6 +76,8 @@ public class MiniGame02BossManager : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("プレイヤー触れてる");
+            // SEを再生する。
+            _audioManager.PlayHitSound(); 
 
             // プレイヤーの速度が十分であれば、ボスにダメージを与える。
             if (_player._moveLevel >= _koMoveLevel.Value)
